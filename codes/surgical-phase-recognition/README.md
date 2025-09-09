@@ -37,19 +37,19 @@ This framework implements the **"Phase Recognition Dataset Description"** method
 **13-Phase Complete Taxonomy** (CATARACT_LMM_PHASES_13):
 ```python
 CATARACT_LMM_PHASES_13 = {
-    "Incision": 0,                     # Initial corneal incision
-    "Viscoelastic": 1,                 # Viscoelastic agent injection  
-    "Rhexis": 2,                       # Capsulorhexis (paper uses "Rhexis")
-    "Hydrodissection": 3,              # Cortex-lens separation
-    "Phacoemulsification": 4,          # Ultrasonic lens fragmentation
-    "Aspiration": 5,                   # Cortex removal (I/A phase)
-    "Capsule Polishing": 6,            # Posterior capsule cleaning
-    "Lens Insertion": 7,               # Intraocular lens implantation
-    "Viscoelastic Removal": 8,         # Viscoelastic material removal
-    "Anterior Chamber Flushing": 9,    # Chamber irrigation
-    "Tonifying-Antibiotics": 10,       # Final medication instillation
-    "Idle": 11,                        # Surgical inactivity/instrument exchange
-    "Wound Suturing": 12,              # Final wound closure
+    "Incision": 0,                   # Initial corneal incision
+    "Viscoelastic": 1,               # Viscoelastic agent injection
+    "Capsulorhexis": 2,              # Opening of the anterior capsule
+    "Hydrodissection": 3,            # Separation of lens nucleus from cortex
+    "Phacoemulsification": 4,        # Ultrasonic lens fragmentation and removal
+    "Irrigation Aspiration": 5,      # Cortex removal using irrigation/aspiration
+    "Capsule Polishing": 6,          # Posterior capsule cleaning
+    "Lens Implantation": 7,          # Intraocular lens implantation
+    "Lens Positioning": 8,           # Adjustment of lens position in capsule
+    "Viscoelastic Suction": 9,       # Removal of viscoelastic material
+    "Anterior Chamber Flushing": 10, # Final irrigation of anterior chamber
+    "Tonifying Antibiotics": 11,     # Instillation of antibiotics/medication
+    "Idle": 12                       # Surgical inactivity or instrument exchange
 }
 ```
 
