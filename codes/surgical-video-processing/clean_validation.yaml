@@ -1,0 +1,138 @@
+backup:
+  backup_compression: true
+  backup_directory: backups
+  backup_verification: true
+  enable_backups: true
+  enable_versioning: true
+  max_backup_age_days: 30
+  max_backup_count: 100
+config_directory: configs
+created_at: '2025-08-31T12:32:51.352181'
+custom_settings: {}
+default_hospital: general
+enable_batch_processing: true
+enable_dry_run: false
+enable_resume: true
+ffmpeg:
+  crf: 23
+  executable_path: ffmpeg
+  extra_input_args: []
+  extra_output_args: []
+  hwaccel: null
+  hwaccel_device: null
+  max_muxing_queue_size: 1024
+  preset: medium
+  threads: 0
+  timeout_seconds: 3600
+hospitals:
+  farabi:
+    audio_codec: aac
+    blur_filter: boxblur=10:1
+    container_format: mp4
+    crop_filter: crop=720:480:100:50
+    custom_filters: []
+    enable_blur: true
+    enable_cropping: true
+    enable_deidentification: true
+    enable_quality_check: true
+    min_quality_score: 0.7
+    name: farabi
+    postprocessing_steps: []
+    preprocessing_steps: []
+    target_bitrate: 1M
+    target_fps: 30
+    target_resolution: 720x480
+    type: !!python/object/apply:utils.config_manager.HospitalType
+    - farabi
+    video_codec: libx265
+  general:
+    audio_codec: aac
+    blur_filter: ''
+    container_format: mp4
+    crop_filter: ''
+    custom_filters: []
+    enable_blur: false
+    enable_cropping: false
+    enable_deidentification: true
+    enable_quality_check: true
+    min_quality_score: 0.7
+    name: general
+    postprocessing_steps: []
+    preprocessing_steps: []
+    target_bitrate: 2M
+    target_fps: 30
+    target_resolution: 1920x1080
+    type: !!python/object/apply:utils.config_manager.HospitalType
+    - general
+    video_codec: libx264
+  noor:
+    audio_codec: aac
+    blur_filter: ''
+    container_format: mp4
+    crop_filter: ''
+    custom_filters:
+    - -movflags
+    - +faststart
+    enable_blur: false
+    enable_cropping: false
+    enable_deidentification: true
+    enable_quality_check: true
+    min_quality_score: 0.7
+    name: noor
+    postprocessing_steps: []
+    preprocessing_steps: []
+    target_bitrate: 2M
+    target_fps: 60
+    target_resolution: 1920x1080
+    type: !!python/object/apply:utils.config_manager.HospitalType
+    - noor
+    video_codec: libx265
+input_directory: input
+log_directory: logs
+max_batch_size: 10
+mode: !!python/object/apply:utils.config_manager.ProcessingMode
+- production
+notifications:
+  email_enabled: false
+  email_settings: {}
+  enable_notifications: false
+  notification_level: error
+  slack_enabled: false
+  slack_settings: {}
+  webhook_enabled: false
+  webhook_settings: {}
+output_directory: output
+performance:
+  batch_size: 1
+  checkpoint_interval: 100
+  enable_gpu_acceleration: false
+  enable_performance_monitoring: true
+  enable_progress_tracking: true
+  gpu_device_id: 0
+  max_concurrent_jobs: 4
+  memory_limit_gb: 8.0
+  temp_dir: /tmp
+quality_control:
+  allowed_codecs:
+  - h264
+  - h265
+  - mpeg4
+  enable_audio_validation: true
+  enable_content_analysis: false
+  enable_validation: true
+  max_duration_seconds: 14400.0
+  max_file_size_gb: 20.0
+  min_duration_seconds: 1.0
+  min_resolution: 320x240
+  quality_threshold: 0.6
+security:
+  anonymization_level: basic
+  enable_audit_logging: true
+  enable_encryption: false
+  enable_watermarking: false
+  encryption_algorithm: AES-256
+  phi_removal_enabled: true
+  secure_deletion: false
+  watermark_text: ''
+temp_directory: temp
+version: 1.0.0

@@ -1,0 +1,376 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "cataract-lmm"
+version = "1.0.0"
+description = "Large-Scale, Multi-Center, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis"
+authors = [
+    "Mohammad Javad Ahmadi <mjahmadee@kntu.ac.ir>",
+    "Iman Gandomi <iman.gandomi@kntu.ac.ir>",
+    "Parisa Abdi <parisaabdi@gmail.com>",
+    "Seyed-Farzad Mohammadi <sf.mohammadi@tums.ac.ir>",
+    "Amirhossein Taslimi <amirhossein.taslimi@kntu.ac.ir>",
+    "Mehdi Khodaparast zavareh <m.khodaparast@farabi.tums.ac.ir>",
+    "Hassan Hashemi <h.hashemi@noorvision.ir>",
+    "Mahdi Tavakoli <tavakoli@ualberta.ca>",
+    "Hamid D. Taghirad <taghirad@kntu.ac.ir>"
+]
+license = "CC-BY-4.0"
+readme = "README.md"
+homepage = "https://github.com/MJAHMADEE/Cataract-LMM"
+repository = "https://github.com/MJAHMADEE/Cataract-LMM"
+documentation = "https://cataract-lmm.readthedocs.io"
+keywords = [
+    "computer-vision", 
+    "medical-ai", 
+    "surgical-video-analysis", 
+    "deep-learning", 
+    "cataract-surgery",
+    "instance-segmentation",
+    "phase-recognition",
+    "skill-assessment",
+    "multi-task-learning"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps."
+]
+
+packages = [
+    {include = "surgical_video_processing", from = "surgical-video-processing"},
+    {include = "surgical_instance_segmentation", from = "surgical-instance-segmentation"},
+    {include = "surgical_phase_recognition", from = "surgical-phase-recognition"},
+    {include = "surgical_skill_assessment", from = "surgical-skill-assessment"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+# Core Deep Learning Framework - More flexible version constraints
+torch = ">=1.13.0,<3.0.0"
+torchvision = ">=0.14.0,<1.0.0"
+torchaudio = ">=0.12.0,<3.0.0"
+
+# Computer Vision & Video Processing
+opencv-python-headless = ">=4.6.0,<5.0.0"
+Pillow = ">=9.0.0,<11.0.0"
+scikit-image = ">=0.19.0,<0.22.0"
+pytorchvideo = ">=0.1.5"
+decord = ">=0.6.0"
+av = ">=8.0.0"
+moviepy = ">=1.0.3"
+
+# ML & Scientific Computing
+numpy = ">=1.21.0,<2.0.0"
+pandas = ">=1.4.0,<3.0.0"
+scikit-learn = ">=1.1.0,<2.0.0"
+scipy = ">=1.8.0,<2.0.0"
+torchmetrics = ">=0.9.0,<2.0.0"
+
+# Deep Learning Models & Architectures
+ultralytics = ">=8.0.0"
+timm = ">=0.6.0"
+transformers = ">=4.20.0,<5.0.0"
+einops = ">=0.4.0"
+timesformer-pytorch = {version = ">=0.1.0", optional = true}
+pytorch-lightning = ">=1.8.0,<3.0.0"
+
+# Data Processing & Augmentation
+albumentations = ">=1.3.0"
+imgaug = ">=0.4.0"
+
+# Configuration & File Management
+PyYAML = ">=6.0,<7.0"
+pydantic = ">=1.10.0,<2.0"
+click = ">=8.0.0"
+
+# Visualization & Plotting
+matplotlib = ">=3.5.0,<4.0.0"
+seaborn = ">=0.11.0,<0.13.0"
+plotly = ">=5.0.0,<6.0.0"
+
+# Progress & Logging
+tqdm = ">=4.64.0"
+rich = ">=12.0.0"
+colorlog = ">=6.7.0"
+
+# Jupyter & Interactive Development
+jupyter = ">=1.0.0"
+ipywidgets = ">=7.7.0,<9.0.0"
+nbconvert = ">=6.5.0"
+ipykernel = ">=6.0.0"
+
+# Compatibility & Utilities
+typing-extensions = ">=4.0.0"
+packaging = ">=21.0"
+requests = ">=2.28.0"
+urllib3 = ">=1.26.0,<2.0.0"
+
+# Testing (required for CI/CD)
+pytest-benchmark = ">=4.0.0"
+
+[tool.poetry.group.dev.dependencies]
+# Code Quality & Formatting
+black = ">=23.0.0"
+isort = ">=5.10.0"
+flake8 = ">=6.0.0"
+mypy = ">=1.5.1"
+pre-commit = ">=3.3.3"
+
+# Testing
+pytest = ">=7.4.0"
+pytest-cov = ">=4.1.0"
+pytest-html = ">=4.0.0"
+pytest-xdist = ">=3.3.1"
+pytest-mock = ">=3.10.0"
+pytest-benchmark = ">=4.0.0"
+hypothesis = ">=6.0.0"
+
+# Security
+bandit = ">=1.7.5"
+pip-audit = ">=2.6.0"
+
+# Documentation
+sphinx = ">=5.0.0"
+sphinx-rtd-theme = ">=1.0.0"
+
+# Performance Profiling
+memory-profiler = ">=0.60.0"
+line-profiler = ">=4.0.0"
+
+# Type stubs
+types-PyYAML = "*"
+types-requests = "*"
+
+[tool.poetry.group.optional.dependencies]
+# Optional GPU acceleration packages
+# torch-cu117 = {url = "https://download.pytorch.org/whl/cu117/torch-1.13.1%2Bcu117-cp38-cp38-linux_x86_64.whl"}
+# torchvision-cu117 = {url = "https://download.pytorch.org/whl/cu117/torchvision-0.14.1%2Bcu117-cp38-cp38-linux_x86_64.whl"}
+
+# Experiment tracking
+mlflow = {version = ">=2.0.0", optional = true}
+wandb = {version = ">=0.13.0", optional = true}
+
+# Additional ML libraries
+xgboost = {version = ">=1.6.0", optional = true}
+lightgbm = {version = ">=3.3.0", optional = true}
+catboost = {version = ">=1.0.0", optional = true}
+
+[tool.poetry.extras]
+experiments = ["mlflow", "wandb"]
+boosting = ["xgboost", "lightgbm", "catboost"]
+gpu = []  # Placeholder for GPU packages
+all = ["mlflow", "wandb", "xgboost", "lightgbm", "catboost"]
+
+[tool.poetry.scripts]
+cataract-lmm = "surgical_video_processing.main:main"
+process-videos = "surgical_video_processing.main:main"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/MJAHMADEE/Cataract-LMM/issues"
+"Discussions" = "https://github.com/MJAHMADEE/Cataract-LMM/discussions"
+"Documentation" = "https://cataract-lmm.readthedocs.io"
+"Dataset" = "https://docs.google.com/forms/d/e/1FAIpQLSfmyMAPSTGrIy2sTnz0-TMw08ZagTimRulbAQcWdaPwDy187A/viewform?usp=dialog"
+
+# ============================================================================
+# TOOL CONFIGURATIONS
+# ============================================================================
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | __pycache__
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+known_first_party = ["codes"]
+known_third_party = [
+    "torch", "torchvision", "cv2", "numpy", "pandas", "matplotlib", 
+    "seaborn", "plotly", "PIL", "yaml", "tqdm", "rich", "click",
+    "ultralytics", "timm", "transformers", "albumentations"
+]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+implicit_reexport = false
+strict_equality = true
+show_error_codes = true
+
+# Per-module options
+[[tool.mypy.overrides]]
+module = [
+    "cv2.*",
+    "decord.*",
+    "av.*",
+    "moviepy.*",
+    "pytorchvideo.*",
+    "ultralytics.*",
+    "timesformer_pytorch.*",
+    "albumentations.*",
+    "imgaug.*"
+]
+ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = [
+    "E203",  # whitespace before ':'
+    "E501",  # line too long (handled by black)
+    "W503",  # line break before binary operator
+    "W504"   # line break after binary operator
+]
+exclude = [
+    ".git",
+    "__pycache__",
+    "*.egg-info",
+    ".pytest_cache",
+    ".mypy_cache",
+    "build",
+    "dist",
+    ".venv",
+    "venv"
+]
+per-file-ignores = [
+    "__init__.py:F401",  # imported but unused
+    "test_*.py:D",       # ignore docstring errors in tests
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "test_*"]
+skips = ["B101", "B601"]  # Skip assert_used and shell_injection for tests
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = [
+    "surgical-instance-segmentation/tests",
+    "surgical-phase-recognition/tests", 
+    "surgical-skill-assessment/tests",
+    "surgical-video-processing/tests"
+]
+addopts = [
+    "--strict-markers", 
+    "--strict-config",
+    "--verbose",
+    "--tb=short",
+    "-p no:warnings",
+    "--import-mode=importlib"
+]
+
+markers = [
+    "unit: Unit tests for individual functions/classes",
+    "integration: Integration tests for component interaction", 
+    "performance: Performance and benchmarking tests",
+    "gpu: Tests requiring GPU/CUDA support",
+    "slow: Tests that take more than 10 seconds",
+    "network: Tests requiring network connectivity",
+    "docker: Tests requiring Docker environment",
+    "e2e: End-to-end tests"
+]
+
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore:.*PROTOCOL_TLS.*:DeprecationWarning"
+]
+
+[tool.coverage.run]
+source = [
+    "surgical-instance-segmentation",
+    "surgical-phase-recognition", 
+    "surgical-skill-assessment",
+    "surgical-video-processing"
+]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/.*",
+    "*/venv/*",
+    "*/env/*",
+    "setup.py",
+    "*/migrations/*",
+    "*/legacy_scripts/*",
+    "*/reference_scripts/*",
+    "*/models/*",  # Skip model files that require heavy ML dependencies
+    "*/training/*",  # Skip training modules
+    "*/inference/*"  # Skip inference modules
+]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+    "except ImportError:",
+    "if TYPE_CHECKING:"
+]
+ignore_errors = true
+precision = 2
+show_missing = true
+skip_covered = false
+fail_under = 2
+
+[tool.coverage.html]
+directory = "reports/coverage"
+title = "Cataract-LMM Test Coverage Report"
+
+[tool.coverage.xml]
+output = "reports/coverage.xml"

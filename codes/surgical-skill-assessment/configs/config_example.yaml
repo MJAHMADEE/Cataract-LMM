@@ -1,0 +1,156 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🔧 EXAMPLE CONFIGURATION - SURGICAL SKILL ASSESSMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+# This is an example configuration showing typical settings for different scenarios.
+# Copy this file to config.yaml and modify according to your needs.
+
+# ───── DATASET PATHS ─────
+paths:
+  # Root directory containing your video dataset
+  # Expected structure: data_root/class_name/video_files.*
+  # Supported formats: .mp4, .avi, .mov, .mkv, .wmv
+  data_root: "/path/to/your/surgical/videos"
+  
+  # Output directory for all experiment results
+  # A timestamped subdirectory will be created for each run
+  output_root: "/path/to/save/outputs"
+
+# ───── HARDWARE CONFIGURATION ─────
+hardware:
+  # Number of GPUs to use (0 = CPU only, 1+ = number of CUDA devices)
+  gpus: 1
+  
+  # Enable Automatic Mixed Precision for faster training and lower memory usage
+  # Requires compatible GPU (RTX series, V100, A100, etc.)
+  mixed_precision: true
+  
+  # Soft GPU memory limit in GB - helps with batch size auto-tuning
+  max_gpu_mem_gb: 12
+
+# ───── DATA PROCESSING CONFIGURATION ─────
+data:
+  # Video sampling parameters
+  frame_rate: 10          # Frames per second to sample from videos
+  clip_len: 32           # Number of frames per video clip
+  snippet_overlap: 8     # Overlapping frames between clips (for data augmentation)
+  
+  # Data loading
+  num_workers: 4         # Number of CPU workers for data loading
+  
+  # ───── DATASET SPLITTING ─────
+  # Choose splitting strategy: "stratified" or "manual"
+  split_mode: "stratified"
+  
+  # Stratified split percentages (must sum to 100)
+  global_split_pct:
+    train: 70
+    val: 15  
+    test: 15
+  
+  # Manual split configuration (only used if split_mode = "manual")
+  class_ratios:
+    train: {novice: 50, expert: 50}    # Balanced training set
+    val: {novice: 50, expert: 50}      # Balanced validation set  
+    test: {novice: 50, expert: 50}     # Balanced test set
+  
+  manual_split_sizes:
+    train: 200   # Total training samples
+    val: 40      # Total validation samples
+    test: 40     # Total test samples
+
+# ───── MODEL SELECTION ─────
+model:
+  # Available models:
+  # 3D CNNs: x3d_m, x3d_s, x3d_l, slow_r50, slowfast_r50, r2plus1d, r3d_18
+  # CNN-RNN: cnn_lstm, cnn_gru  
+  # Transformers: timesformer, mvit, videomae, vivit
+  model_name: "x3d_m"
+  
+  # Transfer learning: freeze pretrained weights (train only classifier)
+  freeze_backbone: false
+  
+  # Dropout rate for regularization
+  dropout: 0.3
+
+# ───── TRAINING HYPERPARAMETERS ─────
+train:
+  # Training duration
+  epochs: 50
+  
+  # Batch size (will be auto-adjusted if GPU memory is insufficient)
+  batch_size: 8
+  
+  # Optimization
+  lr: 1e-4               # Learning rate
+  weight_decay: 1e-4     # L2 regularization
+  
+  # Learning rate scheduling
+  scheduler: "cosine"    # Options: "cosine", "step", "plateau"
+  step_size: 15         # For step scheduler: epochs between LR drops
+  gamma: 0.5            # For step scheduler: LR multiplication factor
+  
+  # Advanced training options
+  gradient_accumulation: 1  # Simulate larger batch sizes
+  early_stop_patience: 10   # Epochs to wait before early stopping (-1 to disable)
+  
+  # Reproducibility
+  seed: 42
+
+# ───── EVALUATION METRICS ─────
+# Metrics to compute during training and evaluation
+# Available: loss, accuracy, precision, recall, f1, sensitivity, specificity, auc
+metrics:
+  - loss
+  - accuracy
+  - precision
+  - recall
+  - f1
+  - sensitivity
+  - specificity
+  - auc
+
+# ───── LOGGING AND OUTPUT ─────
+logging:
+  # Console output frequency
+  print_freq: 10        # Print progress every N batches
+  
+  # Aesthetic options
+  emojis: true          # Use emojis in console output
+  colour: true          # Use colored console output
+  
+  # File outputs
+  save_stdout: true     # Save all console output to log file
+  save_detailed_predictions: true  # Save per-sample predictions
+
+# ───── PIPELINE MODES ─────
+# Enable/disable different stages of the pipeline
+modes:
+  run_training: true    # Train the model
+  run_eval: true        # Evaluate on test set
+  run_inference: true   # Run inference demo
+  
+  # Path to video for inference demo (only used if run_inference = true)
+  inference_video: "/path/to/example/video.mp4"
+
+# ───── ADVANCED OPTIONS ─────
+override:
+  # Manual class specification (null = auto-detect from folder names)
+  class_names: null     # Example: ["novice", "intermediate", "expert"]
+  
+  # Custom display names for classes
+  class_name_map:       # Example mapping
+    0: "Novice Surgeon 🟡"
+    1: "Expert Surgeon 🟢"
+
+# ───── EXPERIMENT TRACKING ─────
+experiment:
+  # Experiment metadata
+  name: "surgical_skill_baseline"
+  description: "Baseline model for surgical skill assessment"
+  tags: ["baseline", "x3d", "surgical_skills"]
+  
+  # Weights & Biases integration (optional)
+  wandb:
+    enabled: false
+    project: "surgical-skill-assessment"
+    entity: "your-wandb-username"

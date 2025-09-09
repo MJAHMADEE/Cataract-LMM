@@ -1,0 +1,207 @@
+/* Custom CSS for Cataract-LMM Documentation */
+
+/* Color scheme based on medical/surgical theme */
+:root {
+    --primary-color: #2c5aa0;
+    --secondary-color: #1e3a8a;
+    --accent-color: #3b82f6;
+    --success-color: #059669;
+    --warning-color: #d97706;
+    --error-color: #dc2626;
+    --text-color: #1f2937;
+    --light-gray: #f9fafb;
+    --medium-gray: #e5e7eb;
+}
+
+/* Enhanced header styling */
+.wy-nav-top {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+/* Code blocks and syntax highlighting */
+.highlight {
+    background: var(--light-gray);
+    border-left: 4px solid var(--accent-color);
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 4px;
+}
+
+/* API documentation styling */
+.py.class > dt {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid var(--accent-color);
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.py.method > dt {
+    background: var(--light-gray);
+    border-left: 3px solid var(--success-color);
+    padding: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+/* Table styling for better readability */
+table.docutils {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+}
+
+table.docutils th {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75em;
+    text-align: left;
+}
+
+table.docutils td {
+    padding: 0.5em;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+table.docutils tr:nth-child(even) {
+    background: var(--light-gray);
+}
+
+/* Admonition styling */
+.admonition {
+    border-radius: 6px;
+    margin: 1em 0;
+    padding: 1em;
+    border-left: 4px solid;
+}
+
+.admonition.note {
+    background: #f0f9ff;
+    border-left-color: var(--accent-color);
+}
+
+.admonition.warning {
+    background: #fffbeb;
+    border-left-color: var(--warning-color);
+}
+
+.admonition.danger {
+    background: #fef2f2;
+    border-left-color: var(--error-color);
+}
+
+.admonition.tip {
+    background: #f0fdf4;
+    border-left-color: var(--success-color);
+}
+
+/* Navigation enhancements */
+.wy-nav-side {
+    background: #ffffff;
+    border-right: 2px solid var(--medium-gray);
+}
+
+.wy-menu-vertical a {
+    color: var(--text-color);
+}
+
+.wy-menu-vertical a:hover {
+    background: var(--light-gray);
+    color: var(--primary-color);
+}
+
+/* Button and link styling */
+a.btn {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+    border-radius: 6px;
+    padding: 0.6em 1.2em;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.3em;
+    transition: all 0.3s ease;
+}
+
+a.btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer styling */
+.rst-footer-buttons {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 2px solid var(--medium-gray);
+}
+
+/* Module documentation badges */
+.module-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.2em 0.6em;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin: 0.2em;
+}
+
+.module-badge.video-processing { background: #059669; }
+.module-badge.instrument-segmentation { background: #dc2626; }
+.module-badge.phase-classification { background: #d97706; }
+.module-badge.skill-assessment { background: #7c3aed; }
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5em;
+}
+
+.status-indicator.success { background: var(--success-color); }
+.status-indicator.warning { background: var(--warning-color); }
+.status-indicator.error { background: var(--error-color); }
+
+/* Performance metrics tables */
+.metrics-table {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+}
+
+.metrics-table .metric-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Code example containers */
+.code-example {
+    background: #f8fafc;
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 1em 0;
+}
+
+.code-example h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.1em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .wy-nav-content {
+        margin-left: 0;
+    }
+    
+    .code-example {
+        padding: 1em;
+        margin: 0.5em 0;
+    }
+    
+    table.docutils {
+        font-size: 0.9em;
+    }
+}

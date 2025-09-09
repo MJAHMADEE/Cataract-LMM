@@ -1,0 +1,204 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 📋 CONFIGURATION FILE - COMPLETE DOCUMENTATION
+# ═══════════════════════════════════════════════════════════════════════════════
+# This configuration file controls all aspects of the video classification pipeline.
+# Each section is thoroughly documented with exact keywords and valid options.
+
+# ───── PATHS CONFIGURATION ─────
+# Configure input/output directories for your project
+paths:
+  # Root directory containing your video dataset
+  # Structure must be: data_root/class_name/video_files.*
+  # Supported video formats: .mp4, .avi, .mov, .mkv
+  data_root: "/content/drive/MyDrive/SkillDataset_2Clusters"
+
+  # Directory where all outputs will be saved (logs, checkpoints, plots, predictions)
+  # A timestamped subdirectory will be created for each run
+  output_root: "/content/drive/MyDrive/2ClusterVideos/outputs"
+
+# ───── HARDWARE CONFIGURATION ─────
+# Control GPU usage and memory optimization
+hardware:
+  # Number of GPUs to use
+  # Options: 0 (CPU only), 1+ (number of CUDA devices to use)
+  gpus: 1
+
+  # Enable Automatic Mixed Precision (AMP) for faster training and lower memory usage
+  # Options: true, false
+  mixed_precision: true
+
+  # Soft GPU memory limit in GB - script will auto-tune batch size if exceeded
+  # Recommended: 8, 12, 16, 24, 40, 80 (based on your GPU)
+  max_gpu_mem_gb: 12
+
+# ───── DATA LOADING & AUGMENTATION ─────
+# Configure how videos are loaded and processed
+data:
+  # Frames per second to sample from videos
+  # Lower values = fewer frames, faster processing
+  # Typical values: 1, 5, 10, 15, 30
+  frame_rate: 10
+
+  # Number of frames per video snippet/clip
+  # Must be compatible with model architecture
+  # Common values: 8, 16, 32, 64, 128, 256
+  clip_len: 50
+
+  # Overlap between consecutive snippets (in frames)
+  # 0 = no overlap, clip_len/2 = 50% overlap
+  # Increases data but also training time
+  snippet_overlap: 10
+
+  # Number of CPU workers for data loading
+  # Recommended: 2-8 (depends on CPU cores)
+  num_workers: 4
+
+  # ───── TRAIN/VAL/TEST SPLIT CONFIGURATION ─────
+  # Two modes available for splitting your dataset:
+
+  # Split mode - controls how data is divided
+  # Options:
+  # - "stratified": Maintains class proportions across splits (uses global_split_pct)
+  # - "manual": Allows custom class ratios per split (uses class_ratios & manual_split_sizes)
+  split_mode: "stratified"
+
+  # ── STRATIFIED MODE SETTINGS ──
+  # Used only when split_mode = "stratified"
+  # Percentages must sum to 100
+  global_split_pct:
+    train: 80    # 70% of each class → training
+    val:   10    # 15% of each class → validation
+    test:  10    # 15% of each class → testing
+
+  # ── MANUAL MODE SETTINGS ──
+  # Used only when split_mode = "manual"
+
+  # Class ratios - controls relative proportion of each class within each split
+  # Values represent percentages and should sum to 100 for each split
+  # Example: {cluster_0: 80, cluster_1: 20} = 80% class 0, 20% class 1
+  class_ratios:
+    train: {cluster_0: 50, cluster_1: 50}    # Balanced training set
+    val: {cluster_0: 50, cluster_1: 50}      # Balanced validation set
+    test: {cluster_0: 50, cluster_1: 50}     # Balanced test set
+
+  # Total number of samples per split (used only in manual mode)
+  # Adjust based on your dataset size
+  manual_split_sizes:
+    train: 140   # Total training samples
+    val: 10      # Total validation samples
+    test: 10     # Total test samples
+
+# ───── MODEL CONFIGURATION ─────
+# Select and configure the neural network architecture
+model:
+  # Model architecture to use
+  # Available options (exact keywords):
+  #
+  # CNN-based models:
+  # - "x3d_m": X3D-Medium (efficient 3D CNN)
+  # - "slow_r50": Slow pathway ResNet-50
+  # - "slowfast_r50": SlowFast ResNet-50 (dual pathway)
+  # - "r2plus1d": R(2+1)D-18 (decomposed 3D convolutions)
+  # - "r3d_18": ResNet 3D-18 (full 3D convolutions)
+  #
+  # Hybrid CNN-RNN models:
+  # - "cnn_lstm": CNN backbone + Bidirectional LSTM
+  # - "cnn_gru": CNN backbone + Bidirectional GRU
+  #
+  # Transformer-based models:
+  # - "timesformer": TimeSformer (divided space-time attention)
+  # - "mvit": Multiscale Vision Transformer
+  # - "videomae": Video Masked Autoencoder V2
+  # - "vivit": Video Vision Transformer
+  model_name: "x3d_m"
+
+  # Freeze pretrained backbone weights (train only classifier head)
+  # Options: true (faster, less memory), false (better accuracy)
+  freeze_backbone: false
+
+  # Dropout rate for classifier head (0.0-1.0)
+  dropout: 0.25
+
+# ───── TRAINING HYPERPARAMETERS ─────
+# Configure the training process
+train:
+  # Maximum number of training epochs
+  epochs: 25
+
+  # Batch size (will be auto-tuned if GPU memory exceeded)
+  batch_size: 4
+
+  # Learning rate (typical range: 1e-5 to 1e-2)
+  lr: 1.0e-4
+
+  # Weight decay for AdamW optimizer (L2 regularization)
+  weight_decay: 1.0e-4
+
+  # Learning rate scheduler
+  # Options: "cosine" (smooth decay), "step" (sudden drops)
+  scheduler: "cosine"
+
+  # Step scheduler parameters (only used if scheduler = "step")
+  step_size: 10    # Epochs between LR drops
+  gamma: 0.1       # LR multiplication factor
+
+  # Gradient accumulation steps (simulates larger batch size)
+  # Use values > 1 if running out of memory
+  gradient_accumulation: 1
+
+  # Early stopping patience (epochs without improvement)
+  # Set to -1 to disable early stopping
+  early_stop_patience: 5
+
+  # Random seed for reproducibility
+  seed: 42
+
+# ───── METRICS CONFIGURATION ─────
+# Metrics to track during training/evaluation
+# Order matters for display in logs and plots
+# Available metrics: loss, accuracy, precision, recall, f1, sensitivity, specificity, auc
+metrics: [loss, accuracy, precision, recall, f1, sensitivity, specificity, auc]
+
+# ───── LOGGING CONFIGURATION ─────
+# Control output verbosity and style
+logging:
+  # Print frequency (batches between console updates)
+  print_freq: 5
+
+  # Enable emoji in console output
+  emojis: true
+
+  # Enable colored console output
+  colour: true
+
+  # Save all console output to log file
+  save_stdout: true
+
+  # Save detailed per-sample predictions (JSON format)
+  save_detailed_predictions: true
+
+# ───── RUN MODES ─────
+# Toggle different pipeline stages
+modes:
+  # Train the model
+  run_training: true
+
+  # Evaluate best model on test set
+  run_eval: true
+
+  # Run inference demo on single video
+  run_inference: true
+
+  # Path to video for inference demo
+  inference_video: "/content/drive/MyDrive/2CusterVideos/cluster_0/SK_0002_S1_1006_Capsulorhexis.avi"
+
+# ───── CLASS HANDLING ─────
+# Override automatic class detection
+override:
+  # Custom class names (null = auto-detect from folder names)
+  # Example: ["healthy", "diseased"]
+  class_names: null
+
+  # Pretty names for display (maps class index to display name)
+  # Example: {0: "Healthy 🌿", 1: "Diseased 🍂"}
+  class_name_map: {}

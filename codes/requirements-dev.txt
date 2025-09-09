@@ -1,0 +1,21 @@
+# Enterprise-Grade Audit & DevSecOps Tooling
+
+# Static Analysis & Code Quality
+flake8>=6.0.0
+mypy>=1.5.1
+pydantic>=2.0.0
+structlog>=23.1.0
+types-PyYAML
+
+# Security
+bandit>=1.7.5
+
+# Testing & Coverage
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-html>=4.0.0
+pytest-xdist>=3.3.1
+pytest-benchmark>=4.0.0
+
+# Other
+pre-commit>=3.3.3

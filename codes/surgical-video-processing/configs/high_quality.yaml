@@ -1,0 +1,132 @@
+# High Quality Processing Configuration for Cataract-LMM Dataset
+# Optimized for maximum quality preservation and detailed analysis
+# Based on reference script methodology with quality enhancements
+
+# General Processing Configuration
+processing:
+  quality_check_enabled: true
+  deidentification_enabled: true
+  processing_enabled: true
+  metadata_extraction_enabled: true
+  parallel_processing: false      # Sequential for maximum quality
+  max_workers: 4
+  output_format: "mp4"
+  quality_threshold: 85.0         # Very high quality threshold
+  processing_crf: 18             # Near-lossless processing
+  target_resolution: null         # Preserve original resolution
+  target_fps: null               # Preserve original fps
+  preserve_audio: true           # Keep audio for analysis
+  backup_originals: true
+  log_level: "DEBUG"
+
+# Video Preprocessing Configuration
+preprocessing:
+  standardize_resolution: false   # Keep original resolution
+  target_width: null
+  target_height: null
+  standardize_fps: false          # Keep original fps
+  target_fps: null
+  enhance_contrast: true          # Enhance for analysis
+  reduce_noise: true              # High-quality denoising
+  stabilize_video: true           # Advanced stabilization
+  crop_margins: [0, 0, 0, 0]      # No cropping to preserve data
+  brightness_adjustment: 0
+  contrast_adjustment: 1.05       # Slight contrast enhancement
+  saturation_adjustment: 1.02     # Slight saturation boost
+  gamma_correction: 0.98          # Slight gamma adjustment
+  sharpen_kernel_size: 5          # Quality sharpening
+  noise_reduction_strength: 3     # Moderate noise reduction
+
+# Quality Control Configuration
+quality_control:
+  min_overall_score: 80.0         # Very high standards
+  min_focus_score: 75.0
+  max_glare_percentage: 5.0       # Very strict glare control
+  min_exposure_score: 70.0
+  max_motion_threshold: 10.0
+  min_completeness_score: 90.0
+  enable_focus_check: true
+  enable_glare_check: true
+  enable_exposure_check: true
+  enable_motion_check: true
+  enable_completeness_check: true
+  sample_frame_count: 100         # Extensive sampling
+  sample_interval: 0.5            # Dense sampling
+  surgical_field_roi: null        # Auto-detect ROI
+  focus_kernel_size: 7
+  glare_threshold: 250            # Strict glare detection
+  motion_threshold: 3.0
+  generate_report: true
+  save_analysis_frames: true
+
+# De-identification Configuration
+deidentification:
+  remove_metadata: true
+  remove_timestamps: true
+  remove_watermarks: true
+  remove_audio: false             # Keep audio for analysis
+  anonymize_audio: true           # But anonymize it
+  blur_patient_info: true
+  remove_date_time: true
+  hash_identifiers: true
+  roi_blur_regions: []
+  timestamp_regions:              # Comprehensive timestamp removal
+    - [0, 0, 300, 60]
+    - [0, -60, 300, 60]           # Bottom-left (relative to height)
+    - [-300, 0, 300, 60]          # Top-right (relative to width)
+    - [-300, -60, 300, 60]        # Bottom-right
+  watermark_regions:              # Comprehensive watermark removal
+    - [0, 0, 200, 100]
+    - [-200, 0, 200, 100]
+    - [0, -100, 200, 100]
+    - [-200, -100, 200, 100]
+    - [0.4, 0, 0.2, 0.08]         # Center top (relative coordinates)
+    - [0.4, 0.92, 0.2, 0.08]      # Center bottom
+  blur_strength: 40               # Strong blur for privacy
+  replacement_color: [0, 0, 0]
+
+# Video Compression Configuration
+compression:
+  target_quality: 95              # Maximum quality
+  max_file_size_mb: 2000          # Large files acceptable
+  preserve_surgical_detail: true
+  compression_speed: "veryslow"   # Maximum quality encoding
+  output_format: "mp4"
+  video_codec: "libx264"
+  audio_codec: "flac"             # Lossless audio
+  crf_value: 18                   # Near-lossless
+  bitrate_mode: "crf"
+  target_bitrate_mbps: null
+  max_bitrate_mbps: 50            # Very high bitrate
+  two_pass_encoding: true         # Best quality
+  adaptive_bitrate: true
+  roi_encoding: true
+  surgical_field_roi: null        # Auto-detect
+  denoising: false                # Preserve original quality
+  sharpening: false               # No artificial sharpening
+  color_space: "yuv444p"          # No chroma subsampling
+  pixel_format: "yuv444p"
+  hardware_acceleration: "none"   # Software encoding for quality
+
+# Pipeline Configuration
+pipeline:
+  enable_preprocessing: true
+  enable_quality_control: true
+  enable_deidentification: true
+  enable_compression: true
+  stop_on_quality_failure: true  # Strict quality control
+  backup_originals: true
+  cleanup_intermediates: false   # Keep intermediates for analysis
+  generate_reports: true
+  output_structure: "detailed"
+  parallel_stages: false
+
+# Environment-specific Settings
+environment:
+  temp_directory: "/tmp/surgical_video_processing"
+  log_directory: "./logs"
+  max_memory_usage_gb: 32         # High memory for quality processing
+  gpu_acceleration: false         # CPU for maximum quality
+  cuda_device_id: 0
+  hospital_source: "research"
+  equipment_model: "High Quality Research"

@@ -1,0 +1,93 @@
+# Processing Configuration for Cataract-LMM Dataset  
+# Based on process_videos.bat reference script methodology
+#
+# This configuration implements the specific processing approach found in
+# process_videos.bat for phacoemulsification cataract surgery videos.
+# No hospital-specific assumptions are made beyond what's documented
+# in the Cataract-LMM research paper.
+
+# General Processing Configuration
+processing:
+  quality_check_enabled: true
+  deidentification_enabled: true
+  processing_enabled: true
+  metadata_extraction_enabled: true
+  parallel_processing: false
+  max_workers: 4
+  output_format: "mp4"
+  quality_threshold: 60.0
+  processing_crf: 23
+  target_resolution: null  # Preserve original resolution
+  target_fps: null         # Preserve original fps
+  preserve_audio: false    # No audio preservation in reference script
+  backup_originals: true
+  log_level: "INFO"
+
+# Reference Script Processing Settings (from process_videos.bat)
+reference_processing:
+  enabled: true
+  video_codec: "libx265"
+  crf_value: 23
+  movflags: "+faststart"
+  # Note: process_videos.bat uses simpler processing without crop/blur filters
+
+# Video Preprocessing Configuration
+preprocessing:
+  standardize_resolution: false  # Preserve original
+  standardize_fps: false         # Preserve original
+  enhance_contrast: false
+  reduce_noise: false
+  stabilize_video: false
+  crop_margins: [0, 0, 0, 0]
+  brightness_adjustment: 0
+  contrast_adjustment: 1.0
+  saturation_adjustment: 1.0
+  gamma_correction: 1.0
+
+# Quality Control Configuration
+quality_control:
+  min_overall_score: 60.0
+  min_focus_score: 50.0
+  max_glare_percentage: 15.0
+  min_exposure_score: 40.0
+  max_motion_threshold: 20.0
+  min_completeness_score: 70.0
+  enable_focus_check: true
+  enable_glare_check: true
+  enable_exposure_check: true
+  enable_motion_check: true
+  enable_completeness_check: true
+
+# De-identification Configuration
+deidentification:
+  remove_metadata: true
+  remove_timestamps: true
+  remove_watermarks: true
+  remove_audio: true
+  blur_patient_info: true
+  remove_date_time: true
+  hash_identifiers: true
+
+# FFmpeg Configuration (from process_videos.bat)
+ffmpeg:
+  global_options: ["-y"]
+  input_options: []
+  video_codec: "libx265"
+  crf: 23
+  output_options: ["-movflags", "+faststart"]
+
+# Batch Processing
+batch:
+  resume_capability: true
+  progress_tracking: true
+  error_handling: "continue"
+  output_naming: "processed_{filename}"
+  create_manifest: true
+
+# Output Configuration
+output:
+  directory_structure: "flat"
+  filename_prefix: "processed_"
+  preserve_timestamps: false
+  create_checksums: true
+  generate_metadata: true

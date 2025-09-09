@@ -1,0 +1,89 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Python files
+[*.py]
+indent_size = 4
+max_line_length = 88
+
+# YAML files
+[*.{yml,yaml}]
+indent_size = 2
+
+# JSON files
+[*.json]
+indent_size = 2
+
+# JavaScript/TypeScript files
+[*.{js,ts}]
+indent_size = 2
+
+# HTML files
+[*.html]
+indent_size = 2
+
+# CSS files
+[*.css]
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 120
+
+# reStructuredText files
+[*.rst]
+indent_size = 3
+max_line_length = 120
+
+# Shell scripts
+[*.sh]
+indent_size = 2
+
+# Batch files
+[*.bat]
+end_of_line = crlf
+
+# Makefiles
+[{Makefile,makefile,*.mk}]
+indent_style = tab
+indent_size = 4
+
+# Docker files
+[{Dockerfile,Dockerfile.*}]
+indent_size = 2
+
+# Configuration files
+[*.{ini,cfg,conf,toml}]
+indent_size = 2
+
+# XML files
+[*.xml]
+indent_size = 2
+
+# SQL files
+[*.sql]
+indent_size = 2
+
+# Jupyter Notebooks (JSON format)
+[*.ipynb]
+indent_size = 1
+
+# GitHub workflows
+[.github/workflows/*]
+indent_size = 2
+
+# Requirements files
+[requirements*.txt]
+indent_size = 2

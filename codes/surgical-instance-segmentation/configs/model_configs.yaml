@@ -1,0 +1,128 @@
+# Model Configuration for Cataract-LMM Instance Segmentation
+# Aligned with paper benchmarks and reference notebook implementations
+
+# YOLOv11 Configuration (Top Performer - 73.9% mAP Task 3)
+yolov11:
+  model_name: "yolo11l-seg"
+  architecture: "YOLOv11 Large Segmentation"
+  parameters: "25.3M"
+  
+  # Training configuration from yolov11_segmentation_training.ipynb
+  training:
+    epochs: 80
+    imgsz: 640
+    batch_size: 20
+    device: 0  # GPU
+    plots: true
+    resume: true
+    
+  # Performance from academic paper
+  performance:
+    task_3_map: 73.9
+    cornea_map: 76.3
+    pupil_map: 90.5
+    best_instruments:
+      - phaco_handpiece: 84.3
+      - primary_knife: 86.0
+      - forceps: 74.5
+    
+  # Data configuration
+  data_config: "./data.yaml"
+  
+# YOLOv8 Configuration (Legacy Support)  
+yolov8:
+  model_name: "yolo8l-seg"
+  architecture: "YOLOv8 Large Segmentation" 
+  
+  # Training configuration from yolov8_segmentation_training.ipynb
+  training:
+    epochs: 80
+    imgsz: 640
+    batch_size: 20
+    device: 0
+    plots: true
+    
+  # Performance from academic paper
+  performance:
+    task_3_map: 73.8
+    overall_instruments: 71.9
+    
+# Mask R-CNN Configuration (ResNet50-FPN)
+mask_rcnn:
+  model_name: "mask_rcnn_resnet50_fpn"
+  architecture: "Mask R-CNN with ResNet-50 FPN backbone"
+  
+  # Training configuration from mask_rcnn_training.ipynb
+  training:
+    num_epochs: 100
+    batch_size: 4
+    learning_rate: 0.005
+    optimizer: "AdamW"
+    scheduler: "StepLR"
+    
+  # Model configuration
+  model:
+    backbone: "resnet50"
+    fpn: true
+    num_classes: 13  # 12 + background
+    
+  # Performance from academic paper  
+  performance:
+    task_3_map: 53.7
+    tissue_classes_map: 92.9  # Cornea: 94.7%, Pupil: 91.2%
+    instrument_classes_map: 45.9
+    
+# SAM Configuration (Segment Anything Model)
+sam:
+  model_name: "sam_vit_h"
+  architecture: "Vision Transformer Huge"
+  parameters: "632M"
+  
+  # Inference configuration from sam_inference.ipynb
+  inference:
+    prompt_type: "bbox"  # Bounding box prompts
+    confidence_threshold: 0.8
+    stability_score: 0.95
+    
+  # Performance from academic paper (zero-shot)
+  performance:
+    task_3_map: 56.0
+    prompt_method: "ground_truth_bbox"
+    
+# SAM2 Configuration  
+sam2:
+  model_name: "sam2"
+  architecture: "Segment Anything Model 2"
+  
+  # Performance from academic paper (zero-shot)
+  performance:
+    task_3_map: 55.2
+    video_capability: true
+    
+# Common training settings
+common_training:
+  input_size: [640, 640]
+  augmentation:
+    horizontal_flip: true
+    brightness_adjustment: true
+    gaussian_blur: true
+    hsv_jitter: true
+    
+  # Dataset splits (video-level to prevent leakage)
+  data_splits:
+    train: 0.70  # 70%
+    validation: 0.20  # 20% 
+    test: 0.10   # 10%
+    
+# Evaluation protocol
+evaluation:
+  metrics:
+    primary: "mask_mAP"  # COCO evaluation protocol
+    iou_thresholds: [0.50, 0.95]  # IoU from 0.50 to 0.95
+    
+  # Task-specific evaluation
+  task_evaluation:
+    task_1: ["cornea", "pupil", "instrument"]
+    task_2: ["cornea", "pupil", "knife", "instrument", "capsulorhexis_forceps", 
+             "forceps", "lens_injector", "phaco_handpiece", "ia_handpiece"]
+    task_3: "all_12_classes"

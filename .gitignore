@@ -1,0 +1,274 @@
+# Comprehensive .gitignore for the Cataract-LMM project
+# Covers Python, data science, ML, medical imaging, and general development files
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+.coverage.*
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+docs/build/
+site/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.env
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Data Science & ML Specific
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.npz
+*.npy
+*.parquet
+*.feather
+*.arrow
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.pb
+*.onnx
+*.tflite
+*.safetensors
+checkpoints/
+saved_models/
+model_outputs/
+experiments/
+wandb/
+mlruns/
+.wandb/
+
+# Medical Imaging & Video Data
+*.dcm
+*.nii
+*.nii.gz
+*.mha
+*.mhd
+*.raw
+*.nrrd
+*.vtk
+*.stl
+*.avi
+*.mp4
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.m4v
+
+# Large datasets and temporary data
+data/raw/
+data/processed/
+data/external/
+data/interim/
+temp/
+tmp/
+cache/
+*.cache
+logs/
+outputs/
+results/
+*.log
+*.out
+*.err
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Security and secrets
+*.pem
+*.key
+*.crt
+*.cert
+secrets/
+.secrets/
+api_keys.txt
+credentials.json
+
+# Medical data privacy (HIPAA compliance)
+patient_data/
+phi_data/
+protected_data/
+anonymized_data/backup/
+identifiable_data/
+
+# Project-specific temporary files
+backup/
+archive/
+old/
+deprecated/
+.backup/
+
+# Large files that shouldn't be in git
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.iso
+
+# GPU and CUDA cache
+.nv_cache/
+.cuda_cache/
+
+# MLOps and experiment tracking
+.dvc/
+dvcignore
+.neptune/
+.comet/
+tensorboard_logs/
+
+# Documentation build artifacts
+docs/build/
+*.pdf
+*.epub
+
+# CI/CD artifacts
+.github/workflows/*.log
+ci_artifacts/
+build_artifacts/
+
+# Legacy project-specific ignores
+codes/bandit-results.json
+codes/reports/*.json

@@ -1,0 +1,74 @@
+# Fast Training Configuration
+# Optimized for quick experimentation and development
+
+model:
+  name: "x3d_xs"
+  num_classes: 11
+  input_size: [224, 224]
+  clip_length: 8
+  dropout: 0.1
+  pretrained: true
+
+data:
+  data_root: "/path/to/data"
+  train_annotation: "train_annotations.csv"
+  val_annotation: "val_annotations.csv"
+  test_annotation: "test_annotations.csv"
+  
+  # Video preprocessing
+  target_fps: 2
+  max_frames: 64
+  sampling_strategy: "random"
+  
+  # Data loading
+  batch_size: 16
+  num_workers: 8
+  pin_memory: true
+  
+  # Augmentation
+  augment_prob: 0.3
+  use_advanced_augmentation: false
+
+training:
+  max_epochs: 10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "step"
+  
+  # Early stopping
+  patience: 5
+  min_delta: 0.01
+  
+  # Checkpointing
+  save_top_k: 1
+  monitor: "val_acc"
+  mode: "max"
+  
+  # Gradient settings
+  gradient_clip_val: 1.0
+  accumulate_grad_batches: 1
+  
+  # Mixed precision
+  precision: "16-mixed"
+
+experiment:
+  name: "fast_training"
+  description: "Fast training configuration for development and testing"
+  tags: ["development", "fast", "x3d"]
+  
+  # Logging
+  log_every_n_steps: 10
+  log_model: false
+  
+  # Wandb settings
+  use_wandb: false
+  
+  # Output directories
+  output_dir: "./outputs/fast"
+  checkpoint_dir: "./checkpoints/fast"
+  log_dir: "./logs/fast"
+  
+  # Reproducibility
+  seed: 42
+  deterministic: false

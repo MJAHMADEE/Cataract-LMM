@@ -1,0 +1,155 @@
+# Docker Compose Configuration for Cataract-LMM
+# Multi-service deployment with GPU support
+# Author: Senior Principal Engineer
+
+version: '3.8'
+
+services:
+  # Main application service
+  cataract-lmm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: cataract-lmm:latest
+    container_name: cataract-lmm-app
+    restart: unless-stopped
+    
+    # GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    
+    # Environment variables
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTHONPATH=/app/codes
+    
+    # Volume mounts
+    volumes:
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+      - ./checkpoints:/app/checkpoints
+      - ./evaluation_results:/app/evaluation_results
+    
+    # Network configuration
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    
+    # Resource limits
+    mem_limit: 16g
+    memswap_limit: 16g
+    shm_size: 2g
+
+  # Development service (optional)
+  cataract-lmm-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: cataract-lmm:dev
+    container_name: cataract-lmm-dev
+    restart: unless-stopped
+    profiles: ["dev"]
+    
+    # GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    
+    # Environment variables
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - JUPYTER_ENABLE_LAB=yes
+      - PYTHONPATH=/app/codes
+    
+    # Volume mounts (including source code for development)
+    volumes:
+      - .:/app/codes
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+      - ./checkpoints:/app/checkpoints
+      - ./evaluation_results:/app/evaluation_results
+    
+    # Network configuration
+    ports:
+      - "8888:8888"
+      - "8001:8000"
+      - "8081:8080"
+    
+    # Resource limits
+    mem_limit: 24g
+    memswap_limit: 24g
+    shm_size: 4g
+
+  # Monitoring service
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: cataract-lmm-prometheus
+    restart: unless-stopped
+    profiles: ["monitoring"]
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    
+    ports:
+      - "9090:9090"
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: cataract-lmm-grafana
+    restart: unless-stopped
+    profiles: ["monitoring"]
+    
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    
+    volumes:
+      - grafana_data:/var/lib/grafana
+    
+    ports:
+      - "3000:3000"
+    
+    depends_on:
+      - prometheus
+
+# Named volumes for persistent data
+volumes:
+  prometheus_data:
+  grafana_data:
+
+# Networks
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

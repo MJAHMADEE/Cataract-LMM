@@ -1,0 +1,30 @@
+# Development Dependencies
+
+# Core testing framework
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+
+# Code quality and linting
+flake8>=5.0.0
+black>=22.0.0
+isort>=5.10.0
+mypy>=0.991
+
+# Documentation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Performance profiling
+memory-profiler>=0.60.0
+line-profiler>=4.0.0
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+plotly>=5.0.0
+
+# Additional testing utilities
+hypothesis>=6.0.0
+factory-boy>=3.2.0
+responses>=0.22.0

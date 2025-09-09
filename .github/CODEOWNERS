@@ -1,0 +1,108 @@
+# CODEOWNERS - Automated Code Review Assignment
+# This file defines code ownership for the Cataract-LMM repository
+# All code, documentation, and infrastructure maintained by Mohammad Javad Ahmadi (@MJAHMADEE)
+
+# ============================================================================
+# Global Ownership
+# ============================================================================
+# Mohammad Javad Ahmadi (@MJAHMADEE) owns all code, documentation, and infrastructure
+* @MJAHMADEE
+
+# ============================================================================
+# Project Infrastructure & DevOps
+# ============================================================================
+/.github/ @MJAHMADEE
+/Dockerfile* @MJAHMADEE
+/docker-compose*.yml @MJAHMADEE
+/*Makefile @MJAHMADEE
+/.pre-commit-config.yaml @MJAHMADEE
+/pyproject.toml @MJAHMADEE
+/poetry.lock @MJAHMADEE
+/.gitignore @MJAHMADEE
+/.editorconfig @MJAHMADEE
+
+# ============================================================================
+# CI/CD & Automation
+# ============================================================================
+/.github/workflows/ @MJAHMADEE
+/.github/actions/ @MJAHMADEE
+
+# ============================================================================
+# Documentation
+# ============================================================================
+/README.md @MJAHMADEE
+/docs/ @MJAHMADEE
+/**/*.md @MJAHMADEE
+/CONTRIBUTING.md @MJAHMADEE
+/CODE_OF_CONDUCT.md @MJAHMADEE
+
+# ============================================================================
+# Core Framework Modules
+# ============================================================================
+
+# Surgical Video Processing
+/codes/surgical-video-processing/ @MJAHMADEE
+
+# Instance Segmentation
+/codes/surgical-instance-segmentation/ @MJAHMADEE
+
+# Phase Recognition
+/codes/surgical-phase-recognition/ @MJAHMADEE
+
+# Skill Assessment
+/codes/surgical-skill-assessment/ @MJAHMADEE
+
+# Main Codes Directory
+/codes/ @MJAHMADEE
+
+# ============================================================================
+# Dataset and Data
+# ============================================================================
+# NOTE: Data ownership and licensing details are specified in DATA_LICENSE.md
+/data/ @MJAHMADEE
+/**/data/ @MJAHMADEE
+/**/*dataset* @MJAHMADEE
+/**/*annotation* @MJAHMADEE
+
+# ============================================================================
+# Testing & Quality Assurance
+# ============================================================================
+/**/tests/ @MJAHMADEE
+/**/test_* @MJAHMADEE
+/**/*test*.py @MJAHMADEE
+
+# ============================================================================
+# Configuration & Setup
+# ============================================================================
+/**/configs/ @MJAHMADEE
+/**/*.yaml @MJAHMADEE
+/**/*.yml @MJAHMADEE
+/**/*.json @MJAHMADEE
+/**/setup.py @MJAHMADEE
+/**/requirements*.txt @MJAHMADEE
+
+# ============================================================================
+# Notebooks & Research
+# ============================================================================
+/**/notebooks/ @MJAHMADEE
+/**/*.ipynb @MJAHMADEE
+
+# ============================================================================
+# Security & Compliance
+# ============================================================================
+/**/*security* @MJAHMADEE
+/**/*auth* @MJAHMADEE
+/.env* @MJAHMADEE
+
+# ============================================================================
+# License and Legal
+# ============================================================================
+/LICENSE* @MJAHMADEE
+/DATA_LICENSE.md @MJAHMADEE
+
+# ============================================================================
+# Release Management
+# ============================================================================
+/CHANGELOG.md @MJAHMADEE
+/VERSION @MJAHMADEE
+/REFACTOR_SUMMARY.md @MJAHMADEE

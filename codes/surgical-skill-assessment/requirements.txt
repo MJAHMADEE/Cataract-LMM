@@ -1,0 +1,44 @@
+# Core deep learning dependencies
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# Video processing and computer vision
+pytorchvideo>=0.1.5
+decord>=0.6.0
+av>=8.0.0
+opencv-python>=4.6.0
+
+# Transformer models (optional)
+timesformer-pytorch>=0.1.0
+
+# ML utilities and metrics
+torchmetrics>=0.9.0
+scikit-learn>=1.1.0
+numpy>=1.21.0
+pandas>=1.4.0
+
+# Visualization and plotting
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Progress bars and CLI
+rich>=12.0.0
+tqdm>=4.64.0
+
+# Configuration and utilities
+PyYAML>=6.0
+einops>=0.4.0
+pathlib2>=2.3.0
+
+# Development and testing (optional)
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+isort>=5.10.0
+
+# Jupyter and notebook support
+jupyter>=1.0.0
+ipywidgets>=7.7.0
+nbconvert>=6.5.0

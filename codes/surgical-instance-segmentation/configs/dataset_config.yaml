@@ -1,0 +1,186 @@
+# Dataset Configuration for Cataract-LMM Instance Segmentation
+# Following the dataset naming convention and structure from the academic paper
+
+# Dataset metadata from academic paper
+dataset_info:
+  name: "Cataract-LMM Instance Segmentation Dataset"
+  total_annotated_frames: 6094
+  source_videos: 150
+  annotation_centers: 2  # Farabi (S1) and Noor (S2) hospitals
+  
+  # Sampling methodology from paper
+  sampling:
+    method: "systematic_random"
+    minimum_interval: "1_second"  # Avoid near-duplicate frames
+    temporal_coverage: "all_13_surgical_phases"
+    visual_challenges_included: true
+    
+  # Quality control from paper  
+  quality_control:
+    annotation_platform: "Roboflow"
+    primary_annotator_miou_threshold: 0.95
+    review_process: "two_stage_validation"
+    
+# Cataract-LMM Dataset Naming Convention Implementation
+naming_convention:
+  # Global patterns from dataset specification
+  segmentation_frame_pattern: "SE_<ClipID>_<RawVideoID>_S<Site>_<FrameIndex>.png"
+  segmentation_video_pattern: "SE_<ClipID>_<RawVideoID>_S<Site>.mp4"
+  
+  # Site codes
+  site_codes:
+    S1: "Farabi Hospital"
+    S2: "Noor Hospital"
+    
+  # Index formatting
+  padding:
+    clip_id: 4  # e.g., 0001
+    raw_video_id: 4  # e.g., 0002  
+    frame_index: 7  # e.g., 0000045
+    
+# Data paths following Cataract-LMM structure
+data_paths:
+  base_directory: "/path/to/Cataract-LMM"
+  
+  # Instance Segmentation subset
+  segmentation_subset: "3_Instance_Segmentation"
+  
+  # Source videos (150 total)
+  videos_directory: "3_Instance_Segmentation/videos"
+  video_pattern: "SE_*.mp4"
+  
+  # Annotation formats
+  annotations_directory: "3_Instance_Segmentation/annotations"
+  
+  coco_format:
+    base_path: "3_Instance_Segmentation/annotations/coco_json"
+    images_directory: "images"
+    annotations_file: "annotations.json"
+    image_pattern: "SE_*.png"
+    
+  yolo_format:
+    base_path: "3_Instance_Segmentation/annotations/yolo_txt"
+    images_directory: "images" 
+    labels_directory: "labels"
+    image_pattern: "SE_*.png"
+    label_pattern: "SE_*.txt"
+
+# Class definitions aligned with academic paper
+class_definitions:
+  # Base 12 classes from paper
+  base_classes:
+    0: {name: "cornea", category: "anatomical_structure", color: [255, 0, 0]}
+    1: {name: "pupil", category: "anatomical_structure", color: [0, 255, 0]}
+    2: {name: "primary_knife", category: "cutting_instrument", color: [0, 0, 255]}
+    3: {name: "secondary_knife", category: "cutting_instrument", color: [255, 255, 0]}
+    4: {name: "capsulorhexis_cystotome", category: "manipulation_instrument", color: [255, 0, 255]}
+    5: {name: "capsulorhexis_forceps", category: "grasping_instrument", color: [0, 255, 255]}
+    6: {name: "phaco_handpiece", category: "aspiration_instrument", color: [128, 0, 0]}
+    7: {name: "ia_handpiece", category: "aspiration_instrument", color: [0, 128, 0]}
+    8: {name: "second_instrument", category: "manipulation_instrument", color: [0, 0, 128]}
+    9: {name: "forceps", category: "grasping_instrument", color: [128, 128, 0]}
+    10: {name: "cannula", category: "injection_instrument", color: [128, 0, 128]}
+    11: {name: "lens_injector", category: "injection_instrument", color: [0, 128, 128]}
+    
+  # Task 1: 3 classes (instruments merged)
+  task_1_mapping:
+    0: "cornea"
+    1: "pupil"
+    2: "instrument"  # All instruments 2-11 mapped to this
+    
+  # Task 2: 9 classes (similar instruments merged)
+  task_2_mapping:
+    0: "cornea"
+    1: "pupil"
+    2: "knife"  # primary_knife + secondary_knife
+    3: "instrument"  # cystotome + second_instrument + cannula
+    4: "capsulorhexis_forceps"
+    5: "forceps"
+    6: "lens_injector"
+    7: "phaco_handpiece"
+    8: "ia_handpiece"
+    
+  # Task 3: 12 classes (all distinct)
+  task_3_mapping: "identity"  # 1:1 mapping with base classes
+
+# Data loading configurations
+data_loading:
+  # Standard image preprocessing
+  image_preprocessing:
+    resize: [640, 640]
+    normalize:
+      mean: [0.485, 0.456, 0.406]  # ImageNet standards
+      std: [0.229, 0.224, 0.225]
+      
+  # Data augmentation following paper methodology
+  augmentation:
+    training:
+      - random_horizontal_flip: {probability: 0.5}
+      - gaussian_blur: {kernel_size: 5, sigma: [0.1, 2.0]}
+      - brightness_adjustment: {factor: [-0.2, 0.2]}
+      - hsv_jitter: {hue: 0.015, saturation: 0.7, value: 0.4}
+      
+    validation:
+      - resize: [640, 640]
+      - normalize: true
+      
+  # Dataset splits (video-level to prevent leakage)
+  splits:
+    train: 0.70    # 70% of videos
+    validation: 0.20  # 20% of videos
+    test: 0.10     # 10% of videos
+    split_level: "video"  # Prevent data leakage
+    
+  # DataLoader settings
+  dataloader:
+    batch_size: 16
+    num_workers: 4
+    pin_memory: true
+    shuffle_train: true
+    drop_last: false
+
+# Performance characteristics from academic paper
+performance_characteristics:
+  # Challenge analysis
+  visual_challenges:
+    high_inter_instrument_similarity:
+      affected_classes: ["primary_knife", "secondary_knife", "forceps", "capsulorhexis_forceps"]
+      difficulty: "high"
+      
+    motion_blur_occlusion:
+      most_affected: ["cannula", "second_instrument"]
+      difficulty: "medium"
+      
+    specular_reflections:
+      affected_instruments: "all_metallic"
+      difficulty: "medium"
+      
+  # Performance tiers from paper results
+  performance_tiers:
+    anatomical_structures:
+      difficulty: "easy"
+      typical_map: ">90%"
+      examples: ["pupil", "cornea"]
+      
+    large_instruments:
+      difficulty: "medium"
+      typical_map: "70-85%"
+      examples: ["phaco_handpiece", "lens_injector", "primary_knife"]
+      
+    small_instruments:
+      difficulty: "hard"
+      typical_map: "55-65%"  
+      examples: ["cannula", "second_instrument", "capsulorhexis_cystotome"]
+
+# Validation protocols
+validation:
+  # COCO evaluation protocol from paper
+  coco_evaluation:
+    metrics: ["AP", "AP50", "AP75", "APs", "APm", "APl"]
+    iou_thresholds: [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
+    
+  # Custom surgical metrics
+  surgical_metrics:
+    instrument_detection_rate: true
+    tissue_segmentation_accuracy: true
+    phase_specific_performance: true

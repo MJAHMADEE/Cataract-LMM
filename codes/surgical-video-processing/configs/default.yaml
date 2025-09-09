@@ -1,0 +1,142 @@
+# Default Configuration for Surgical Video Processing
+# Cataract-LMM Dataset Processing Framework
+# 
+# This configuration provides default settings for processing phacoemulsification 
+# cataract surgery videos as described in the Cataract-LMM research paper.
+# Processing methodology aligns with the reference scripts (process_video.sh and process_videos.bat)
+
+# General Processing Configuration
+processing:
+  quality_check_enabled: true
+  deidentification_enabled: true
+  processing_enabled: true
+  metadata_extraction_enabled: true
+  parallel_processing: false
+  max_workers: 4
+  output_format: "mp4"
+  quality_threshold: 60.0
+  processing_crf: 23
+  target_resolution: [1280, 720]
+  target_fps: 30.0
+  preserve_audio: false
+  backup_originals: true
+  log_level: "INFO"
+
+# Video Preprocessing Configuration
+preprocessing:
+  standardize_resolution: true
+  target_width: 1280
+  target_height: 720
+  standardize_fps: true
+  target_fps: 30.0
+  enhance_contrast: true
+  reduce_noise: true
+  stabilize_video: false
+  crop_margins: [0, 0, 0, 0]  # top, right, bottom, left
+  brightness_adjustment: 0
+  contrast_adjustment: 1.0
+  saturation_adjustment: 1.0
+  gamma_correction: 1.0
+  sharpen_kernel_size: 3
+  noise_reduction_strength: 3
+
+# Quality Control Configuration
+quality_control:
+  min_overall_score: 60.0
+  min_focus_score: 50.0
+  max_glare_percentage: 15.0
+  min_exposure_score: 40.0
+  max_motion_threshold: 20.0
+  min_completeness_score: 70.0
+  enable_focus_check: true
+  enable_glare_check: true
+  enable_exposure_check: true
+  enable_motion_check: true
+  enable_completeness_check: true
+  sample_frame_count: 50
+  sample_interval: 2.0
+  surgical_field_roi: null  # Auto-detect
+  focus_kernel_size: 9
+  glare_threshold: 240
+  motion_threshold: 5.0
+  generate_report: true
+  save_analysis_frames: false
+
+# De-identification Configuration
+deidentification:
+  remove_metadata: true
+  remove_timestamps: true
+  remove_watermarks: true
+  remove_audio: true
+  anonymize_audio: false
+  blur_patient_info: true
+  remove_date_time: true
+  hash_identifiers: true
+  roi_blur_regions: []  # Custom regions to blur
+  timestamp_regions:    # Common timestamp locations
+    - [0, 0, 300, 50]      # Top-left
+    - [0, 430, 300, 50]    # Bottom-left (720p)
+    - [420, 0, 300, 50]    # Top-right
+    - [420, 430, 300, 50]  # Bottom-right
+  watermark_regions:    # Common watermark locations
+    - [0, 0, 200, 100]     # Top-left logo
+    - [520, 0, 200, 100]   # Top-right logo
+    - [0, 380, 200, 100]   # Bottom-left info
+    - [520, 380, 200, 100] # Bottom-right info
+  blur_strength: 25
+  replacement_color: [0, 0, 0]  # Black (B, G, R)
+
+# Video Processing Configuration
+video_processing:
+  target_quality: 75
+  max_file_size_mb: null  # No limit
+  preserve_surgical_detail: true
+  processing_speed: "medium"
+  output_format: "mp4"
+  video_codec: "libx264"
+  audio_codec: "aac"
+  crf_value: 23
+  bitrate_mode: "crf"
+  target_bitrate_mbps: null
+  max_bitrate_mbps: null
+  two_pass_encoding: false
+  adaptive_bitrate: true
+  roi_encoding: true
+
+# FFmpeg Processing Settings (aligned with reference scripts)
+ffmpeg:
+  global_options: ["-y", "-hide_banner", "-loglevel", "warning"]
+  input_options: []
+  output_options: ["-movflags", "+faststart"]
+  video_codec: "libx265"
+  audio_codec: "copy"
+  crf: 23
+  preset: "medium"
+  pixel_format: "yuv420p"
+  surgical_field_roi: null  # Auto-detect
+  denoising: false
+  sharpening: false
+  color_space: "yuv420p"
+  pixel_format: "yuv420p"
+  hardware_acceleration: "none"
+
+# Pipeline Configuration
+pipeline:
+  enable_preprocessing: true
+  enable_quality_control: true
+  enable_deidentification: true
+  enable_compression: true
+  stop_on_quality_failure: true
+  backup_originals: true
+  cleanup_intermediates: true
+  generate_reports: true
+  output_structure: "nested"  # flat, nested, dated
+  parallel_stages: false
+
+# Environment-specific Settings
+environment:
+  temp_directory: "/tmp/surgical_video_processing"
+  log_directory: "./logs"
+  max_memory_usage_gb: 8
+  gpu_acceleration: false
+  cuda_device_id: 0

@@ -1,0 +1,160 @@
+# Cataract-LMM Instance Segmentation Task Definitions
+# Based on "Cataract-LMM: Large-Scale, Multi-Center, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis"
+
+# Task granularity levels as described in the academic paper
+task_granularity:
+  task_1:
+    name: "Binary Segmentation (3 Classes)"
+    description: "High-level detection for distinguishing active surgical periods"
+    classes:
+      - cornea
+      - pupil  
+      - instrument  # All 10 instruments merged into single class
+    total_classes: 3
+    use_case: "Activity detection, workflow recognition"
+    
+  task_2:
+    name: "Intermediate Segmentation (9 Classes)"
+    description: "Balanced approach merging only visually similar instruments"
+    classes:
+      - cornea
+      - pupil
+      - knife  # Primary + Secondary knife merged
+      - instrument  # Cystotome, Second instrument, Cannula merged
+      - capsulorhexis_forceps
+      - forceps
+      - lens_injector
+      - phaco_handpiece
+      - ia_handpiece
+    total_classes: 9
+    use_case: "Robust multi-class instrument recognition"
+    
+  task_3:
+    name: "Fine-grained Segmentation (12 Classes)"  
+    description: "Highest detail level - all classes distinct"
+    classes:
+      - cornea
+      - pupil
+      - primary_knife
+      - secondary_knife
+      - capsulorhexis_cystotome
+      - capsulorhexis_forceps
+      - phaco_handpiece
+      - ia_handpiece
+      - second_instrument
+      - forceps
+      - cannula
+      - lens_injector
+    total_classes: 12
+    use_case: "Fine-grained analysis requiring specific instrument distinction"
+
+# Base class definitions from the academic paper
+base_classes:
+  anatomical_structures:
+    cornea:
+      id: 0
+      name: "Cornea"
+      category: "tissue"
+      description: "Transparent front layer of the eye"
+      
+    pupil:
+      id: 1  
+      name: "Pupil"
+      category: "tissue"
+      description: "Opening in the center of the iris"
+      
+  surgical_instruments:
+    primary_knife:
+      id: 2
+      name: "Primary Knife"
+      category: "cutting_instrument"
+      description: "Main incision instrument"
+      
+    secondary_knife:
+      id: 3
+      name: "Secondary Knife" 
+      category: "cutting_instrument"
+      description: "Secondary incision instrument"
+      
+    capsulorhexis_cystotome:
+      id: 4
+      name: "Capsulorhexis Cystotome"
+      category: "manipulation_instrument"
+      description: "Tool for capsule manipulation"
+      
+    capsulorhexis_forceps:
+      id: 5
+      name: "Capsulorhexis Forceps"
+      category: "grasping_instrument"
+      description: "Forceps for capsulorhexis procedure"
+      
+    phaco_handpiece:
+      id: 6
+      name: "Phaco Handpiece"
+      category: "aspiration_instrument"
+      description: "Phacoemulsification probe"
+      
+    ia_handpiece:
+      id: 7
+      name: "I/A Handpiece"
+      category: "aspiration_instrument"
+      description: "Irrigation/Aspiration handpiece"
+      
+    second_instrument:
+      id: 8
+      name: "Second Instrument"
+      category: "manipulation_instrument"
+      description: "Secondary manipulation tool"
+      
+    forceps:
+      id: 9
+      name: "Forceps"
+      category: "grasping_instrument"
+      description: "General surgical forceps"
+      
+    cannula:
+      id: 10
+      name: "Cannula"
+      category: "injection_instrument"
+      description: "Injection cannula"
+      
+    lens_injector:
+      id: 11
+      name: "Lens Injector"
+      category: "injection_instrument"
+      description: "Intraocular lens injector"
+
+# Dataset specifications from academic paper  
+dataset_specifications:
+  total_frames: 6094
+  source_videos: 150
+  sampling_methodology: "Random sampling with 1-second minimum interval"
+  annotation_quality: "Two-stage quality control with mIoU >= 0.95"
+  visual_challenges:
+    - "High inter-instrument similarity"
+    - "Motion blur and occlusion"
+    - "Specular reflections"
+    - "Boundary ambiguity from depth of field"
+
+# Performance benchmarks from academic paper
+performance_benchmarks:
+  yolov11_l:
+    task_1_map: 77.2
+    task_2_map: 75.8  
+    task_3_map: 73.1
+    notes: "Top-performing supervised model"
+    
+  mask_rcnn_resnet50:
+    task_3_map: 53.7
+    tissue_map: 92.9
+    instrument_map: 45.9
+    notes: "Strong performance on anatomical structures"
+    
+  sam_vit_h:
+    task_3_map: 56.0
+    params: "632M"
+    notes: "Zero-shot with bbox prompts"
+    
+  sam2:
+    task_3_map: 55.2
+    notes: "Zero-shot video segmentation model"

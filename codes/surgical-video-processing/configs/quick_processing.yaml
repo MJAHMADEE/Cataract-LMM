@@ -1,0 +1,131 @@
+# Quick Processing Configuration for Cataract-LMM Dataset
+# Optimized for fast processing with acceptable quality trade-offs
+# Based on reference script methodology with speed optimizations
+
+# General Processing Configuration
+processing:
+  quality_check_enabled: false   # Skip for speed
+  deidentification_enabled: true
+  processing_enabled: true
+  metadata_extraction_enabled: false  # Skip for speed
+  parallel_processing: true
+  max_workers: 8
+  output_format: "mp4"
+  quality_threshold: 50.0
+  processing_crf: 28              # Higher CRF for smaller files
+  target_resolution: [720, 480]   # Reduced resolution for speed
+  target_fps: 30.0               # Standardized fps
+  preserve_audio: false
+  backup_originals: false        # Skip backup for speed
+  log_level: "WARNING"
+
+# Video Preprocessing Configuration
+preprocessing:
+  standardize_resolution: true
+  target_width: 1280
+  target_height: 720
+  standardize_fps: true
+  target_fps: 30.0
+  enhance_contrast: false
+  reduce_noise: false
+  stabilize_video: false
+  crop_margins: [0, 0, 0, 0]
+  brightness_adjustment: 0
+  contrast_adjustment: 1.0
+  saturation_adjustment: 1.0
+  gamma_correction: 1.0
+  sharpen_kernel_size: 0
+  noise_reduction_strength: 0
+
+# Quality Control Configuration (Disabled for speed)
+quality_control:
+  min_overall_score: 30.0
+  min_focus_score: 25.0
+  max_glare_percentage: 50.0
+  min_exposure_score: 20.0
+  max_motion_threshold: 50.0
+  min_completeness_score: 40.0
+  enable_focus_check: false
+  enable_glare_check: false
+  enable_exposure_check: false
+  enable_motion_check: false
+  enable_completeness_check: false
+  sample_frame_count: 10          # Minimal sampling
+  sample_interval: 10.0
+  surgical_field_roi: [100, 50, 1080, 620]
+  focus_kernel_size: 3
+  glare_threshold: 240
+  motion_threshold: 10.0
+  generate_report: false
+  save_analysis_frames: false
+
+# De-identification Configuration
+deidentification:
+  remove_metadata: true
+  remove_timestamps: true
+  remove_watermarks: true
+  remove_audio: true
+  anonymize_audio: false
+  blur_patient_info: true
+  remove_date_time: true
+  hash_identifiers: true
+  roi_blur_regions: []
+  timestamp_regions:              # Generic regions for 1280x720
+    - [0, 0, 200, 40]
+    - [0, 680, 200, 40]
+    - [1080, 0, 200, 40]
+    - [1080, 680, 200, 40]
+  watermark_regions:              # Generic watermark regions
+    - [0, 0, 150, 80]
+    - [1130, 0, 150, 80]
+    - [0, 640, 150, 80]
+    - [1130, 640, 150, 80]
+  blur_strength: 15               # Fast blur
+  replacement_color: [0, 0, 0]
+
+# Video Processing Configuration
+video_processing:
+  target_quality: 65              # Lower quality for speed
+  max_file_size_mb: 100          # Smaller files
+  preserve_surgical_detail: false
+  processing_speed: "ultrafast"  # Maximum speed
+  output_format: "mp4"
+  video_codec: "libx264"
+  audio_codec: "aac"
+  crf_value: 28                   # Lower quality
+  bitrate_mode: "crf"
+  target_bitrate_mbps: null
+  max_bitrate_mbps: 5             # Low bitrate
+  two_pass_encoding: false
+  adaptive_bitrate: false
+  roi_encoding: false
+  roi_encoding: false
+  surgical_field_roi: null
+  denoising: false
+  sharpening: false
+  color_space: "yuv420p"
+  pixel_format: "yuv420p"
+  hardware_acceleration: "auto"   # Use any available acceleration
+
+# Pipeline Configuration
+pipeline:
+  enable_preprocessing: true
+  enable_quality_control: false  # Disabled for speed
+  enable_deidentification: true
+  enable_compression: true
+  stop_on_quality_failure: false
+  backup_originals: false
+  cleanup_intermediates: true
+  generate_reports: false
+  output_structure: "flat"
+  parallel_stages: true
+
+# Environment-specific Settings
+environment:
+  temp_directory: "/tmp/surgical_video_processing"
+  log_directory: "./logs"
+  max_memory_usage_gb: 8
+  gpu_acceleration: true
+  cuda_device_id: 0
+  hospital_source: "generic"
+  equipment_model: "Quick Processing"

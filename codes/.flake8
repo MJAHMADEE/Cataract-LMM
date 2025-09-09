@@ -1,0 +1,17 @@
+[flake8]
+max-line-length = 88
+ignore = E203, E501, W293, W291, F401, F403, F405, F541, F811, F821, F841, E402, W503, W504, E722, E128, E226, F402
+exclude = 
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    .pytest_cache,
+    build,
+    dist,
+    *.egg-info
+per-file-ignores =
+    __init__.py:F401,F402
+    */tests/*:F401,F841
+    */conftest.py:F401,F841
+    */config_manager.py:F402

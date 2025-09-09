@@ -1,0 +1,82 @@
+# High Accuracy Configuration
+# Optimized for maximum performance and accuracy
+
+model:
+  name: "swin3d"
+  num_classes: 11
+  input_size: [224, 224]
+  clip_length: 32
+  embed_dim: 128
+  depths: [2, 2, 18, 2]
+  num_heads: [4, 8, 16, 32]
+  dropout: 0.1
+  pretrained: true
+
+data:
+  data_root: "/path/to/data"
+  train_annotation: "train_annotations.csv"
+  val_annotation: "val_annotations.csv"
+  test_annotation: "test_annotations.csv"
+  
+  # Video preprocessing
+  target_fps: null
+  max_frames: null
+  sampling_strategy: "uniform"
+  
+  # Data loading
+  batch_size: 4
+  num_workers: 8
+  pin_memory: true
+  
+  # Augmentation
+  augment_prob: 0.7
+  use_advanced_augmentation: true
+
+training:
+  max_epochs: 200
+  learning_rate: 0.00005
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  
+  # Early stopping
+  patience: 25
+  min_delta: 0.0001
+  
+  # Checkpointing
+  save_top_k: 5
+  monitor: "val_f1"
+  mode: "max"
+  
+  # Gradient settings
+  gradient_clip_val: 0.5
+  accumulate_grad_batches: 2
+  
+  # Mixed precision
+  precision: "16-mixed"
+  
+  # Validation
+  val_check_interval: 0.5
+  check_val_every_n_epoch: 1
+
+experiment:
+  name: "high_accuracy"
+  description: "High accuracy configuration with Swin3D transformer"
+  tags: ["production", "high_accuracy", "swin3d", "transformer"]
+  
+  # Logging
+  log_every_n_steps: 25
+  log_model: true
+  
+  # Wandb settings
+  use_wandb: true
+  wandb_project: "surgical-phase-recognition"
+  
+  # Output directories
+  output_dir: "./outputs/high_accuracy"
+  checkpoint_dir: "./checkpoints/high_accuracy"
+  log_dir: "./logs/high_accuracy"
+  
+  # Reproducibility
+  seed: 42
+  deterministic: true
