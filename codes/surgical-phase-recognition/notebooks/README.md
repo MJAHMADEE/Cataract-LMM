@@ -37,19 +37,23 @@ Following the comprehensive evaluation in Section 4:
 ### 🏥 **13-Phase Cataract Surgery Taxonomy**
 Complete surgical workflow as defined in the paper:
 
-1. **Idle** - Pre-operative preparation
-2. **Incision** - Initial corneal incision  
-3. **Viscoelastic** - Viscoelastic agent injection
-4. **Capsulorhexis** - Continuous curvilinear capsulorhexis
-5. **Hydrodissection** - Cortex-lens separation
-6. **Phacoemulsification** - Lens nucleus fragmentation
-7. **Irrigation/Aspiration** - Cortex removal
-8. **Capsule Polishing** - Posterior capsule cleaning
-9. **Lens Implantation** - Intraocular lens insertion
-10. **Lens Positioning** - IOL alignment and rotation
-11. **Viscoelastic Suction** - Viscoelastic material removal
-12. **Tonifying Antibiotics** - Antibiotic instillation
-13. **Closing** - Wound sealing and completion
+```python
+CATARACT_LMM_PHASES_13 = {
+    "Incision": 0,                   # Initial corneal incision
+    "Viscoelastic": 1,               # Viscoelastic agent injection
+    "Capsulorhexis": 2,              # Opening of the anterior capsule
+    "Hydrodissection": 3,            # Separation of lens nucleus from cortex
+    "Phacoemulsification": 4,        # Ultrasonic lens fragmentation and removal
+    "Irrigation Aspiration": 5,      # Cortex removal using irrigation/aspiration
+    "Capsule Polishing": 6,          # Posterior capsule cleaning
+    "Lens Implantation": 7,          # Intraocular lens implantation
+    "Lens Positioning": 8,           # Adjustment of lens position in capsule
+    "Viscoelastic Suction": 9,       # Removal of viscoelastic material
+    "Anterior Chamber Flushing": 10, # Final irrigation of anterior chamber
+    "Tonifying Antibiotics": 11,     # Instillation of antibiotics/medication
+    "Idle": 12                       # Surgical inactivity or instrument exchange
+}
+```
 
 ### ⚡ **Research Infrastructure**
 - **PyTorch Lightning Framework**: Scalable multi-GPU training
