@@ -28,19 +28,19 @@ from PIL import Image
 # as described in the academic paper methodology section
 
 CATARACT_LMM_PHASES_13 = {
-    "Incision": 0,                   # Initial corneal incision
-    "Viscoelastic": 1,               # Viscoelastic agent injection
-    "Capsulorhexis": 2,              # Opening of the anterior capsule
-    "Hydrodissection": 3,            # Separation of lens nucleus from cortex
-    "Phacoemulsification": 4,        # Ultrasonic lens fragmentation and removal
-    "Irrigation Aspiration": 5,      # Cortex removal using irrigation/aspiration
-    "Capsule Polishing": 6,          # Posterior capsule cleaning
-    "Lens Implantation": 7,          # Intraocular lens implantation
-    "Lens Positioning": 8,           # Adjustment of lens position in capsule
-    "Viscoelastic Suction": 9,       # Removal of viscoelastic material
-    "Anterior Chamber Flushing": 10, # Final irrigation of anterior chamber
-    "Tonifying Antibiotics": 11,     # Instillation of antibiotics/medication
-    "Idle": 12                       # Surgical inactivity or instrument exchange
+    "Incision": 0,
+    "Viscoelastic": 1,
+    "Rhexis": 2,  # Paper uses "Rhexis" (short for Capsulorhexis)
+    "Hydrodissection": 3,
+    "Phacoemulsification": 4,
+    "Aspiration": 5,  # Paper uses "Aspiration"
+    "Capsule Polishing": 6,  # Paper uses "Capsule Polishing" with space
+    "Lens Insertion": 7,  # Paper uses "Lens Insertion"
+    "Viscoelastic Removal": 8,  # Paper uses "Viscoelastic Removal"
+    "Anterior Chamber Flushing": 9,  # Paper uses "Anterior Chamber Flushing"
+    "Tonifying-Antibiotics": 10,  # Paper uses "Tonifying-Antibiotics" with hyphen
+    "Idle": 11,  # Added for surgical inactivity or instrument exchange
+    "Wound Suturing": 12,  # Paper uses "Wound Suturing"
 }
 
 # Reduced 11-phase mapping used in the current implementation
