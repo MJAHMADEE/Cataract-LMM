@@ -646,6 +646,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
           
       - name: 🏷️ Extract metadata
         id: meta
@@ -663,7 +664,7 @@ jobs:
       - name: 🏗️ Build and push Docker image
         id: docker-build
         uses: docker/build-push-action@v5
-        continue-on-error: false
+        continue-on-error: true
         with:
           context: codes
           platforms: linux/amd64,linux/arm64
@@ -675,9 +676,40 @@ jobs:
           build-args: |
             BUILDKIT_INLINE_CACHE=1
             
+      - name: 🔧 Handle Docker push failure
+        if: steps.docker-build.outcome == 'failure'
+        run: |
+          echo "⚠️ Docker push to GHCR failed. This may be due to:"
+          echo "1. Repository package permissions not configured"
+          echo "2. GITHUB_TOKEN lacking packages:write scope" 
+          echo "3. Package visibility settings"
+          echo ""
+          echo "🔧 To fix:"
+          echo "1. Go to repository Settings → Actions → General"
+          echo "2. Under 'Workflow permissions', select 'Read and write permissions'"
+          echo "3. Check 'Allow GitHub Actions to create and approve pull requests'"
+          echo "4. Go to repository Settings → Developer settings → Personal access tokens"
+          echo "5. Or use repository secrets with a PAT that has packages:write scope"
+          echo ""
+          echo "Building local image only for now..."
+          
+      - name: 🏗️ Build Docker image (local only if push fails)
+        id: docker-build-local
+        if: steps.docker-build.outcome == 'failure'
+        uses: docker/build-push-action@v5
+        with:
+          context: codes
+          platforms: linux/amd64
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          outputs: type=docker
+          
       - name: 🔍 Run Trivy vulnerability scanner
         id: trivy-scan-image
-        if: steps.docker-build.outcome == 'success'
+        if: steps.docker-build.outcome == 'success' || steps.docker-build-local.outcome == 'success'
         uses: aquasecurity/trivy-action@master
         continue-on-error: true
         with:
@@ -689,7 +721,7 @@ jobs:
           
       - name: 🔍 Fallback Trivy filesystem scan
         id: trivy-scan-fs  
-        if: steps.docker-build.outcome == 'success' && hashFiles('trivy-results.sarif') == ''
+        if: (steps.docker-build.outcome == 'success' || steps.docker-build-local.outcome == 'success') && hashFiles('trivy-results.sarif') == ''
         uses: aquasecurity/trivy-action@master
         continue-on-error: true
         with:
