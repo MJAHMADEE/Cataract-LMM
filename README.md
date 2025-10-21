@@ -665,24 +665,26 @@ If you use this benchmark dataset or framework in your research, please cite our
 
 ### BibTeX
 ```bibtex
-@article{Ahmadi2025CataractLMM,
-  title={{Cataract-LMM}: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis},
-  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli, Mahdi and Taghirad, Hamid D.},
-  journal={Scientific Data},
-  year={2025},
-  note={Submitted for review},
-  url={https://github.com/MJAHMADEE/Cataract-LMM}
+@misc{ahmadi2025cataractlmmlargescalemultitask,
+      title={Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis}, 
+      author={Mohammad Javad Ahmadi and Iman Gandomi and Parisa Abdi and Seyed-Farzad Mohammadi and Amirhossein Taslimi and Mehdi Khodaparast and Hassan Hashemi and Mahdi Tavakoli and Hamid D. Taghirad},
+      year={2025},
+      eprint={2510.16371},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.16371},
+      doi={10.48550/arXiv.2510.16371}
 }
 ```
 
 ### APA Style
-Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S.-F., Taslimi, A., Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2025). Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. *Scientific Data* (under review). https://github.com/MJAHMADEE/Cataract-LMM
+Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S.-F., Taslimi, A., Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2025). Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. arXiv. https://doi.org/10.48550/arXiv.2510.16371
 
 ### IEEE Style
-M. J. Ahmadi, I. Gandomi, P. Abdi, S.-F. Mohammadi, A. Taslimi, M. Khodaparast, H. Hashemi, M. Tavakoli, and H. D. Taghirad, "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis," *Scientific Data*, submitted for review, 2025. [Online]. Available: https://github.com/MJAHMADEE/Cataract-LMM
+M. J. Ahmadi et al., "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis," 2025, arXiv:2510.16371. [Online]. Available: https://arxiv.org/abs/2510.16371
 
 ### Chicago Style
-Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirhossein Taslimi, Mehdi Khodaparast, Hassan Hashemi, Mahdi Tavakoli, and Hamid D. Taghirad. "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." *Scientific Data*, submitted for review (2025). https://github.com/MJAHMADEE/Cataract-LMM.
+Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirhossein Taslimi, Mehdi Khodaparast, Hassan Hashemi, Mahdi Tavakoli, and Hamid D. Taghirad. 2025. "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." arXiv. https://doi.org/10.48550/arXiv.2510.16371.
 
 ### Repository Citation
 ```bibtex
