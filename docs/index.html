@@ -133,39 +133,92 @@
             pointer-events: none;
         }
 
-        /* Light Mode */
+        /* Light Mode Enhancements */
         html.light {
             --color-bg: #f8fafc;
-            --color-text: #020617;
+            --color-text: #0f172a;
         }
         
         html.light body {
             background-color: #f8fafc;
-            color: #020617;
+            color: #0f172a;
         }
         
-        html.light .glass-panel,
+        html.light .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(15, 23, 42, 0.08);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+        }
+        
         html.light .glass-card {
-            background: rgba(241, 245, 249, 0.7);
-            border-color: rgba(2, 6, 23, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(15, 23, 42, 0.05);
+            box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.05);
         }
         
         html.light .glass-card:hover {
-            background: rgba(241, 245, 249, 0.9);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(20, 184, 166, 0.3);
+            box-shadow: 0 15px 40px -10px rgba(20, 184, 166, 0.15);
+            transform: translateY(-4px);
         }
         
-        html.light h1, html.light h2, html.light h3, html.light h4 {
-            color: #020617;
+        /* Typography overrides for Light Mode */
+        html.light h1, html.light h2, html.light h3, html.light h4, html.light .text-white { color: #0f172a !important; }
+        html.light p.text-white { color: #1e293b !important; }
+        html.light .text-slate-300 { color: #475569 !important; }
+        html.light .text-slate-400 { color: #64748b !important; }
+        html.light .text-slate-500 { color: #94a3b8 !important; }
+        
+        /* Vivid highlights */
+        html.light .text-medical-teal { color: #0d9488 !important; }
+        html.light .text-blue-400 { color: #2563eb !important; }
+        html.light .text-purple-400 { color: #9333ea !important; }
+        html.light .text-emerald-400 { color: #059669 !important; }
+        html.light .text-amber-400 { color: #d97706 !important; }
+        
+        /* Background and border overrides */
+        html.light .border-white\/5, 
+        html.light .border-white\/10, 
+        html.light .border-white\/20 { 
+            border-color: rgba(15, 23, 42, 0.1) !important; 
+        }
+        html.light .divide-white\/5 > :not([hidden]) ~ :not([hidden]) {
+            border-color: rgba(15, 23, 42, 0.1) !important;
         }
         
-        html.light .text-slate-300 { color: #64748b; }
-        html.light .text-slate-400 { color: #94a3b8; }
-        html.light .text-slate-500 { color: #708090; }
-        html.light .text-white { color: #020617; }
-        html.light .border-white\/5 { border-color: rgba(2, 6, 23, 0.1); }
-        html.light .bg-slate-900, html.light .bg-slate-950, html.light .bg-black\/80 { background-color: #f1f5f9; }
-        html.light .tab-btn { color: #64748b; }
-        html.light .tab-btn.active { background-color: rgba(20, 184, 166, 0.1); color: #0d9488; }
+        html.light .bg-slate-900, 
+        html.light .bg-slate-950, 
+        html.light .bg-slate-900\/60,
+        html.light .bg-slate-900\/50,
+        html.light .bg-slate-900\/40,
+        html.light .bg-slate-950\/50,
+        html.light .bg-black\/80 { 
+            background-color: #f1f5f9 !important; 
+        }
+        
+        html.light .bg-slate-800,
+        html.light .bg-slate-800\/80 {
+            background-color: #e2e8f0 !important;
+        }
+        
+        /* Interactivity Elements */
+        html.light .tab-btn { color: #475569; }
+        html.light .tab-btn:hover { background-color: rgba(15, 23, 42, 0.05); }
+        html.light .tab-btn.active { 
+            background-color: rgba(20, 184, 166, 0.1); 
+            color: #0d9488; 
+            border-color: rgba(20, 184, 166, 0.4) !important; 
+        }
+        
+        /* Table specifics */
+        html.light table th { color: #334155; }
+        html.light table tr.border-white\/5 { border-color: #cbd5e1 !important; }
+        
+        /* Hover tweaks */
+        html.light a.hover\:-translate-y-1:hover {
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+        }
     </style>
 </head>
 <body>
