@@ -2,7 +2,6 @@
 
 <div align="center">
 
-[![Paper Code](https://img.shields.io/badge/Paper_Code-Nature_Scientific_Data-blue?style=for-the-badge)]()
 [![Notebooks](https://img.shields.io/badge/Notebooks-Jupyter-orange?style=for-the-badge&logo=jupyter)]()
 [![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=for-the-badge&logo=python)]()
 
@@ -14,7 +13,7 @@
 
 ## 🎯 Overview
 
-This directory contains the **core code and notebooks** used to generate the experimental results presented in the Cataract-LMM paper submitted to **Nature Scientific Data**. All notebooks have been cleaned of outputs for reproducibility and clarity.
+This directory contains the **core code and notebooks** used to generate the experimental results presented in the Cataract-LMM paper. All notebooks have been cleaned of outputs for reproducibility and clarity.
 
 ---
 
