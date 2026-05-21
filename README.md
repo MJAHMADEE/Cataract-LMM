@@ -1,5 +1,18 @@
 # 🏥 Cataract-LMM: Surgical Video Analysis
 
+<div align="center">
+  <a href="https://mjahmadee.github.io/Cataract-LMM/">
+    <img src="https://img.shields.io/badge/🌐%20Project%20Website-Explore_Now-0052CC?style=for-the-badge" alt="Project Website" />
+  </a>
+  <a href="https://github.com/MJAHMADEE/Cataract-LMM">
+    <img src="https://img.shields.io/badge/GitHub-Code_%26_Docs-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
+  </a>
+  <a href="https://huggingface.co/datasets/mjahmadi/Cataract-LMM">
+    <img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Download_Dataset-FFD21E?style=for-the-badge&logoColor=black" alt="Hugging Face Dataset" />
+  </a>
+</div>
+<br>
+
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-3776ab.svg?style=flat&logo=python&logoColor=white)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org)
 [![Poetry](https://img.shields.io/badge/Dependency%20Management-Poetry-60a5fa.svg?style=flat&logo=poetry&logoColor=white)](https://python-poetry.org)
