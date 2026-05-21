@@ -712,31 +712,40 @@ Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirh
 
 ---
 
-## 👨‍💻 Author
+<a id="citation"></a>
+## 📝 Citation & Academic Request
 
-**Mohammad Javad Ahmadi**
+The Cataract-LMM dataset is open-access and released under the **CC-BY 4.0** license. 
 
-<p>
-<a href="https://drive.google.com/file/d/12mfH_QxeocmGwL8oAGfFRh2LZSZSlrwE/view?usp=sharing" target="_blank">
-  <img src="https://img.shields.io/badge/Resume-View%20CV-blue?style=for-the-badge&logo=google-drive" alt="Resume" />
-</a>
-</p>
+Our manuscript detailing the comprehensive methodology, algorithmic baselines, and technical validations of this dataset has been submitted to **Nature Scientific Data**. While the preprint is available for immediate reference on arXiv ([arXiv:2510.16371](https://arxiv.org/abs/2510.16371)), we professionally request that any publications, derivative works, or systems utilizing this dataset **direct their citations to the final peer-reviewed journal version** once it is officially published.
 
-<p>
-<a href="http://mjahmadee.site123.me/" target="_blank"><img src="https://s24.picofile.com/file/8454571884/website.png" alt="" width="25" height="25"></a>
-<a href="mailto:mjahmadee@gmail.com" target="_blank"><img src="https://s24.picofile.com/file/8454571876/email.png" alt="" width="25" height="25"></a>
-<a href="https://www.linkedin.com/in/mjahmadi/" target="_blank"><img src="https://s25.picofile.com/file/8454571918/LinkedIn.png" alt="" width="25" height="25"></a>
-<a href="https://www.researchgate.net/profile/Mohammad_Ahmadi67" target="_blank"><img src="https://s24.picofile.com/file/8454571968/RG.png" alt="" width="25" height="25"></a>
-<a href="https://scholar.google.com/citations?user=wTnN9IEAAAAJ&hl=en" target="_blank"><img src="https://s25.picofile.com/file/8454571984/GScholar.png" alt="" width="25" height="25"></a>
-<a href="https://orcid.org/0000-0002-2177-9936" rel="noopener noreferrer" target="_blank"><img src="https://s25.picofile.com/file/8454572050/orcid.png" alt="" width="25" height="25"></a>
-<a href="http://www.webofscience.com/wos/author/record/GXN-0273-2022" target="_blank"><img src="https://s25.picofile.com/file/8454572084/publons.png" alt="" width="25" height="25"></a>
-<a href="https://github.com/MJAHMADEE" rel="noopener noreferrer" target="_blank"><img src="https://s24.picofile.com/file/8454572134/Github.png" alt="" width="25" height="25"></a>
-<a href="https://t.me/mjahmadee" target="_blank"><img src="https://s24.picofile.com/file/8454573000/Telegram.png" width="25" height="25"></a>
-<a href="https://x.com/MJXAhmadi" target="_blank"><img src="https://s29.picofile.com/file/8466445000/X.png" alt="" width="25" height="25"></a>
-<a href="https://www.facebook.com/mjahmadi.fb" target="_blank"><img src="https://s24.picofile.com/file/8454572168/fb.png" alt="" width="25" height="25"></a>
-<a href="https://www.instagram.com/mjahmadi.ig/" target="_blank"><img src="https://s25.picofile.com/file/8454572876/insta.png" alt="" width="25" height="25"></a>
-<a href="https://open.spotify.com/user/z14s6ylxt1nql0us1uny613sd?si=d42deb1a572e4c24" target="_blank"><img src="https://s25.picofile.com/file/8454572868/Music.png" alt="" width="25" height="25"></a>
-<a href="https://soundcloud.com/mjahmadi" target="_blank"><img src="https://s25.picofile.com/file/8454572976/SoundCloud.png" width="25" height="25"></a>
+---
+
+<a id="contact"></a>
+## 📬 Contact & Connect
+
+**Mohammad Javad Ahmadi**  
+
+I welcome collaborations, technical inquiries regarding the dataset, and discussions on advancing AI in medical applications. Feel free to connect with me through any of the channels below:
+
+*   📧 **Academic Email:** mjahmadi@email.kntu.ac.ir
+*   📧 **Personal Email:** mjahmadee@gmail.com
+
+<br>
+
+<p align="left">
+  <a href="https://www.linkedin.com/in/mjahmadi/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://scholar.google.com/citations?user=wTnN9IEAAAAJ&hl=en">
+    <img src="https://img.shields.io/badge/Google_Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white" alt="Google Scholar" />
+  </a>
+  <a href="https://github.com/MJAHMADEE">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <a href="https://huggingface.co/mjahmadi">
+    <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face" />
+  </a>
 </p>
 
 ---
