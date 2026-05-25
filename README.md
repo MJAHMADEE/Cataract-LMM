@@ -660,67 +660,25 @@ gh pr create --title "Feature: Add amazing feature"
 
 ## 📄 License
 
-### **Framework License**
-This project framework and code are licensed under the **Creative Commons Attribution 4.0 International License** (CC-BY-4.0). See the [LICENSE](LICENSE) file for details.
+This repository is governed by specific licensing terms to ensure the proper use of both the software framework and the surgical dataset.
 
-### **Data License**
-The dataset has specific ownership and licensing requirements. See [DATA_LICENSE.md](DATA_LICENSE.md) for detailed information about:
-- Data ownership by Farabi Eye Hospital and Noor Eye Hospital
-- Annotation ownership by participating institutions  
-- Attribution requirements under CC-BY 4.0
-- Proper usage guidelines
+### **Dataset License (CC BY-NC-ND 4.0)**
+The **Cataract-LMM** dataset is proudly open-access and is officially licensed under the **[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/)**.
+
+⚠️ **Usage Restrictions:** This license permits any non-commercial use, sharing, distribution, and reproduction in any medium or format, provided you give appropriate credit to the original authors. You **do not** have permission to use this material for commercial purposes, nor may you distribute adapted or derivative material based on this dataset. 
+
+### **Framework Code License (CC-BY 4.0)**
+The software framework, scripts, and codebase associated with this project are licensed under the **[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)** (CC-BY-4.0). See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 📣 Citation
 
-If you use this benchmark dataset or framework in your research, please cite our work. The benchmark has been submitted to *Scientific Data* (Nature Portfolio).
-
-### BibTeX
-```bibtex
-@misc{ahmadi2025cataractlmmlargescalemultitask,
-      title={Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis}, 
-      author={Mohammad Javad Ahmadi and Iman Gandomi and Parisa Abdi and Seyed-Farzad Mohammadi and Amirhossein Taslimi and Mehdi Khodaparast and Hassan Hashemi and Mahdi Tavakoli and Hamid D. Taghirad},
-      year={2025},
-      eprint={2510.16371},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2510.16371},
-      doi={10.48550/arXiv.2510.16371}
-}
-```
-
-### APA Style
-Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S.-F., Taslimi, A., Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2025). Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. arXiv. https://doi.org/10.48550/arXiv.2510.16371
-
-### IEEE Style
-M. J. Ahmadi et al., "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis," 2025, arXiv:2510.16371. [Online]. Available: https://arxiv.org/abs/2510.16371
-
-### Chicago Style
-Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirhossein Taslimi, Mehdi Khodaparast, Hassan Hashemi, Mahdi Tavakoli, and Hamid D. Taghirad. 2025. "Cataract-LMM: Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." arXiv. https://doi.org/10.48550/arXiv.2510.16371.
-
-### Repository Citation
-```bibtex
-@software{cataract_lmm_repo_2025,
-  title={{Cataract-LMM}: Large-Scale, Multi-Source, Multi-Task Benchmark and Framework for Surgical Video Analysis},
-  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli, Mahdi and Taghirad, Hamid D.},
-  year={2025},
-  url={https://github.com/MJAHMADEE/Cataract-LMM},
-  version={1.0.0}
-}
-```
-
----
-
-<a id="citation"></a>
-## 📝 License & Academic Citation
-
-The **Cataract-LMM** dataset is proudly open-access and released under the **[CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)** (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International) license. 
-
-⚠️ **License Usage Note:** This permits any non-commercial use, sharing, distribution, and reproduction in any medium or format, as long as you give appropriate credit to the original authors. You **do not** have permission to use this material for commercial purposes, nor may you distribute adapted/derivative material derived from this dataset. 
-
 🎉 **Update: Our manuscript is officially published!**
-The comprehensive methodology, algorithmic baselines, and technical validations of this dataset have been published in **Nature Scientific Data**. While our earlier preprint remains available for reference on arXiv ([arXiv:2510.16371](https://arxiv.org/abs/2510.16371)), we kindly request that any research or systems utilizing this dataset **direct their citations to the final peer-reviewed journal version**.
+
+If you use the **Cataract-LMM** dataset or framework in your research, please cite our work. The comprehensive methodology, algorithmic baselines, and technical validations of this dataset have been published in **Nature Scientific Data**. 
+
+While our earlier preprint remains available on arXiv ([arXiv:2510.16371](https://arxiv.org/abs/2510.16371)), we kindly request that any research, derivative works, or systems utilizing this dataset **direct their citations to the final peer-reviewed journal version** below.
 
 Please use your preferred format from the options below to cite our work:
 
@@ -753,6 +711,8 @@ M. J. Ahmadi et al., "Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark
   doi={10.1038/s41597-026-07464-0},
   url={[https://doi.org/10.1038/s41597-026-07464-0](https://doi.org/10.1038/s41597-026-07464-0)}
 }
+```
+
 ---
 
 <a id="contact"></a>
