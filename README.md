@@ -719,7 +719,7 @@ M. J. Ahmadi et al., "Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark
 ```bibtex
 @article{Ahmadi2026CataractLMM,
   title={Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis},
-  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli, Mahdi and Taghirad, Hamid D.},
+  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli, Mahdi and D. Taghirad, Hamid},
   journal={Scientific Data},
   year={2026},
   month={May},
