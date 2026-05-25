@@ -713,12 +713,46 @@ Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirh
 ---
 
 <a id="citation"></a>
-## 📝 Citation & Academic Request
+## 📝 License & Academic Citation
 
-The Cataract-LMM dataset is open-access and released under the **CC-BY 4.0** license. 
+The **Cataract-LMM** dataset is proudly open-access and released under the **[CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)** (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International) license. 
 
-Our manuscript detailing the comprehensive methodology, algorithmic baselines, and technical validations of this dataset has been submitted to **Nature Scientific Data**. While the preprint is available for immediate reference on arXiv ([arXiv:2510.16371](https://arxiv.org/abs/2510.16371)), we professionally request that any publications, derivative works, or systems utilizing this dataset **direct their citations to the final peer-reviewed journal version** once it is officially published.
+⚠️ **License Usage Note:** This permits any non-commercial use, sharing, distribution, and reproduction in any medium or format, as long as you give appropriate credit to the original authors. You **do not** have permission to use this material for commercial purposes, nor may you distribute adapted/derivative material derived from this dataset. 
 
+🎉 **Update: Our manuscript is officially published!**
+The comprehensive methodology, algorithmic baselines, and technical validations of this dataset have been published in **Nature Scientific Data**. While our earlier preprint remains available for reference on arXiv ([arXiv:2510.16371](https://arxiv.org/abs/2510.16371)), we kindly request that any research or systems utilizing this dataset **direct their citations to the final peer-reviewed journal version**.
+
+Please use your preferred format from the options below to cite our work:
+
+### 📌 APA (7th ed.)
+Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S.-F., Taslimi, A., Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2026). Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. *Scientific Data*. https://doi.org/10.1038/s41597-026-07464-0
+
+### 📌 MLA (9th ed.)
+Ahmadi, Mohammad Javad, et al. "Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." *Scientific Data*, 23 May 2026, https://doi.org/10.1038/s41597-026-07464-0.
+
+### 📌 Chicago/Turabian
+Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad Mohammadi, Amirhossein Taslimi, Mehdi Khodaparast, Hassan Hashemi, Mahdi Tavakoli, and Hamid D. Taghirad. "Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." *Scientific Data* (2026). https://doi.org/10.1038/s41597-026-07464-0.
+
+### 📌 Harvard
+Ahmadi, M.J., Gandomi, I., Abdi, P., Mohammadi, S.F., Taslimi, A., Khodaparast, M., Hashemi, H., Tavakoli, M. and Taghirad, H.D., 2026. Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. *Scientific Data*. Available at: https://doi.org/10.1038/s41597-026-07464-0.
+
+### 📌 Vancouver
+Ahmadi MJ, Gandomi I, Abdi P, Mohammadi SF, Taslimi A, Khodaparast M, Hashemi H, Tavakoli M, Taghirad HD. Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis. Scientific Data. 2026 May 23. doi: 10.1038/s41597-026-07464-0.
+
+### 📌 IEEE
+M. J. Ahmadi et al., "Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis," *Scientific Data*, May 2026, doi: 10.1038/s41597-026-07464-0.
+
+### 📌 BibTeX
+```bibtex
+@article{Ahmadi2026CataractLMM,
+  title={Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep Learning in Surgical Video Analysis},
+  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli, Mahdi and Taghirad, Hamid D.},
+  journal={Scientific Data},
+  year={2026},
+  month={May},
+  doi={10.1038/s41597-026-07464-0},
+  url={[https://doi.org/10.1038/s41597-026-07464-0](https://doi.org/10.1038/s41597-026-07464-0)}
+}
 ---
 
 <a id="contact"></a>
