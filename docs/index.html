@@ -668,28 +668,36 @@
                 </div>
 
                 <div class="flex-1 shrink-0 glass-panel rounded-xl p-6 relative flex flex-col">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="text-white text-sm font-bold uppercase tracking-wide">📚 Citation Formats</h4>
-                        <div class="flex gap-2">
-                            <button class="citation-tab active text-xs px-3 py-1 rounded border border-medical-teal/50 text-medical-teal" onclick="switchCitationTab('bibtex-tab')">BibTeX</button>
-                            <button class="citation-tab text-xs px-3 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('apa-tab')">APA</button>
-                            <button class="citation-tab text-xs px-3 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('mla-tab')">MLA</button>
+                    <div class="mb-4">
+                        <h4 class="text-white text-sm font-bold uppercase tracking-wide mb-3">📚 Citation Formats</h4>
+                        <p class="text-slate-400 text-xs mb-3">Please cite our peer-reviewed publication:</p>
+                        <div class="flex gap-1 flex-wrap mb-4">
+                            <button class="citation-tab active text-xs px-2 py-1 rounded border border-medical-teal/50 text-medical-teal" onclick="switchCitationTab('bibtex-tab')">BibTeX</button>
+                            <button class="citation-tab text-xs px-2 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('apa-tab')">APA</button>
+                            <button class="citation-tab text-xs px-2 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('mla-tab')">MLA</button>
+                            <button class="citation-tab text-xs px-2 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('chicago-tab')">Chicago</button>
+                            <button class="citation-tab text-xs px-2 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('harvard-tab')">Harvard</button>
+                            <button class="citation-tab text-xs px-2 py-1 rounded border border-slate-600 text-slate-400" onclick="switchCitationTab('ieee-tab')">IEEE</button>
                         </div>
                     </div>
-                    <div class="flex-1">
+                    <div class="flex-1 overflow-y-auto max-h-64">
                         <div id="bibtex-tab" class="citation-content active">
                             <button onclick="copyToClipboard('bibtex')" class="mb-2 text-xs text-medical-teal hover:text-medical-accent transition-colors flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 Copy
                             </button>
-                            <pre class="overflow-x-auto text-[9px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="bibtex">@misc{ahmadi2025cataractlmm,
-    title={Cataract-LMM: A Large-Scale, Multi-Source, Multi-Task 
-           Benchmark for Deep Learning in Surgical Video Analysis}, 
-    author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa and others},
-    year={2025},
-    eprint={2510.16371},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="bibtex">@article{Ahmadi2026CataractLMM,
+  title={Cataract-LMM Large-Scale Multi-Source Multi-Task
+         Benchmark for Deep Learning in Surgical Video Analysis},
+  author={Ahmadi, Mohammad Javad and Gandomi, Iman and Abdi, Parisa
+          and Mohammadi, Seyed-Farzad and Taslimi, Amirhossein
+          and Khodaparast, Mehdi and Hashemi, Hassan and Tavakoli,
+          Mahdi and Taghirad, Hamid D.},
+  journal={Scientific Data},
+  year={2026},
+  month={May},
+  doi={10.1038/s41597-026-07464-0},
+  url={https://doi.org/10.1038/s41597-026-07464-0}
 }</code></pre>
                         </div>
                         <div id="apa-tab" class="citation-content hidden">
@@ -697,26 +705,63 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 Copy
                             </button>
-                            <pre class="overflow-x-auto text-[9px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="apa">Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S. F., Taslimi, A., 
-Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2025). 
-Cataract-LMM: A large-scale multi-source multi-task benchmark for deep 
-learning in surgical video analysis. arXiv preprint arXiv:2510.16371.</code></pre>
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="apa">Ahmadi, M. J., Gandomi, I., Abdi, P., Mohammadi, S.-F., Taslimi, A.,
+Khodaparast, M., Hashemi, H., Tavakoli, M., & Taghirad, H. D. (2026).
+Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep
+Learning in Surgical Video Analysis. Scientific Data.
+https://doi.org/10.1038/s41597-026-07464-0</code></pre>
                         </div>
                         <div id="mla-tab" class="citation-content hidden">
                             <button onclick="copyToClipboard('mla')" class="mb-2 text-xs text-medical-teal hover:text-medical-accent transition-colors flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 Copy
                             </button>
-                            <pre class="overflow-x-auto text-[9px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="mla">Ahmadi, Mohammad Javad, et al. "Cataract-LMM: A Large-Scale Multi-Source 
-Multi-Task Benchmark for Deep Learning in Surgical Video Analysis." 
-arXiv preprint arXiv:2510.16371, 2025.</code></pre>
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="mla">Ahmadi, Mohammad Javad, et al. "Cataract-LMM Large-Scale Multi-Source
+Multi-Task Benchmark for Deep Learning in Surgical Video Analysis."
+Scientific Data, 23 May 2026,
+https://doi.org/10.1038/s41597-026-07464-0.</code></pre>
+                        </div>
+                        <div id="chicago-tab" class="citation-content hidden">
+                            <button onclick="copyToClipboard('chicago')" class="mb-2 text-xs text-medical-teal hover:text-medical-accent transition-colors flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copy
+                            </button>
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="chicago">Ahmadi, Mohammad Javad, Iman Gandomi, Parisa Abdi, Seyed-Farzad
+Mohammadi, Amirhossein Taslimi, Mehdi Khodaparast, Hassan Hashemi,
+Mahdi Tavakoli, and Hamid D. Taghirad. "Cataract-LMM Large-Scale
+Multi-Source Multi-Task Benchmark for Deep Learning in Surgical
+Video Analysis." Scientific Data (2026).
+https://doi.org/10.1038/s41597-026-07464-0.</code></pre>
+                        </div>
+                        <div id="harvard-tab" class="citation-content hidden">
+                            <button onclick="copyToClipboard('harvard')" class="mb-2 text-xs text-medical-teal hover:text-medical-accent transition-colors flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copy
+                            </button>
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="harvard">Ahmadi, M.J., Gandomi, I., Abdi, P., Mohammadi, S.F., Taslimi, A.,
+Khodaparast, M., Hashemi, H., Tavakoli, M. and Taghirad, H.D., 2026.
+Cataract-LMM Large-Scale Multi-Source Multi-Task Benchmark for Deep
+Learning in Surgical Video Analysis. Scientific Data. Available at:
+https://doi.org/10.1038/s41597-026-07464-0.</code></pre>
+                        </div>
+                        <div id="ieee-tab" class="citation-content hidden">
+                            <button onclick="copyToClipboard('ieee')" class="mb-2 text-xs text-medical-teal hover:text-medical-accent transition-colors flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copy
+                            </button>
+                            <pre class="overflow-x-auto text-[8px] text-slate-300 font-mono bg-slate-950/50 p-3 rounded border border-white/5"><code id="ieee">M. J. Ahmadi et al., "Cataract-LMM Large-Scale Multi-Source
+Multi-Task Benchmark for Deep Learning in Surgical Video Analysis,"
+Scientific Data, May 2026, doi: 10.1038/s41597-026-07464-0.</code></pre>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-                <p>&copy; 2025 Cataract-LMM Consortium. CC-BY 4.0 Licensed Data.</p>
+                <div>
+                    <p>&copy; 2024-2026 Cataract-LMM Consortium. Licensed under CC BY-NC-ND 4.0</p>
+                    <p class=\"mt-2 text-slate-600\">Published in <a href=\"https://www.nature.com/articles/s41597-026-07464-0\" class=\"text-medical-teal hover:underline\">Nature Scientific Data</a> | DOI: <a href=\"https://doi.org/10.1038/s41597-026-07464-0\" class=\"text-medical-teal hover:underline\">10.1038/s41597-026-07464-0</a></p>
+                </div>
                 <div class="flex gap-4">
                     <a href="mailto:mjahmadi@email.kntu.ac.ir" class="hover:text-medical-teal transition-colors">Academic: mjahmadi@email.kntu.ac.ir</a>
                     <a href="mailto:mjahmadee@gmail.com" class="hover:text-white transition-colors">Personal: mjahmadee@gmail.com</a>

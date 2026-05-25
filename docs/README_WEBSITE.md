@@ -1,41 +1,126 @@
-# Cataract-LMM Project Website
+# 🌐 Cataract-LMM Project Website
 
-This directory contains the source code for the breathtaking, ultra-professional Github Pages website for **Cataract-LMM: A Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis**.
+This directory contains the source code for the **professional, interactive Github Pages website** for **Cataract-LMM: A Large-Scale, Multi-Source, Multi-Task Benchmark for Deep Learning in Surgical Video Analysis**.
 
-## Architecture & Stack
+## 📋 Overview
+- **Published in**: Nature Scientific Data (May 2026)
+- **License**: CC BY-NC-ND 4.0 (Open-Access Dataset)
+- **DOI**: [10.1038/s41597-026-07464-0](https://doi.org/10.1038/s41597-026-07464-0)
+
+## 🏗️ Architecture & Stack
 - Single-page HTML5 architecture (`index.html`)
 - **Tailwind CSS** (via CDN for zero-build-step deployment)
 - Vanilla JavaScript for IntersectionObserver scroll animations and number counters
 - Custom "Sci-Tech Minimalist" styling with glassmorphism effects
+- Dynamic neural network particle background
 
-## How to Customize and Deploy
+## 📚 Features
+
+### Content Sections
+1. **Hero Section** - Eye-catching introduction with key CTAs
+   - GitHub Repository Link
+   - Hugging Face Dataset Download
+   - Research Paper (Nature Scientific Data)
+   - ArXiv Preprint
+
+2. **Data Counters** - Key statistics visualization
+   - 3,000+ procedures
+   - 1,134+ hours of video
+   - 6,094 segmented frames
+   - 4 annotation tasks
+   - 2 clinical centers
+
+3. **Overview Section** - Problem statement and dataset description
+   - Reality gap in surgical AI
+   - Multi-center acquisition
+   - Hardware heterogeneity
+
+4. **Data Subsets** - Four core annotation tasks
+   - Phase Recognition (13-phase surgical workflow)
+   - Instance Segmentation (12 instrument/anatomy classes)
+   - Object Tracking (spatiotemporal analysis)
+   - Skill Assessment (GRASIS/ICO-OSCAR rubric)
+
+5. **Interactive Benchmarks** - Technical validation results
+   - Workflow & Phase Recognition
+   - Instance Segmentation
+   - Spatiotemporal Tracking
+   - Objective Skill Assessment
+
+6. **Citation & License Footer**
+   - Multiple citation formats (BibTeX, APA, MLA, Chicago, Harvard, IEEE)
+   - License information (CC BY-NC-ND 4.0)
+   - Publication details (Nature Scientific Data)
+   - Contact information
+
+## 🎨 Customization Guide
 
 ### 1. Replace Placeholder Assets
-The website uses placeholder images to maintain its structure. You need to replace these with actual figures from your paper or dataset. 
-Place your high-resolution images in the `docs/assets/` folder, ensuring they match these exact filenames (or update `index.html` to reflect your new filenames):
+The website uses SVG placeholders. Replace with actual figures from your paper:
+- `docs/assets/hero-bg.mp4` (Optional background video)
+- `docs/assets/teaser-figure.png` (Main methodology figure)
+- `docs/assets/task-1-phase.png` (Phase recognition visualization)
+- `docs/assets/task-2-seg.png` (Segmentation examples)
+- `docs/assets/task-3-track.png` (Tracking visualization)
+- `docs/assets/task-4-skill.png` (Skill assessment results)
 
-* `docs/assets/hero-bg.mp4` (Optional: Background video for the hero section. Uncomment the `<video>` tag in `index.html` if used).
-* `docs/assets/teaser-figure.png` (Used in the Abstract section).
-* `docs/assets/task-1-phase.png` (Used in the Bento Box for Phase Recognition).
-* `docs/assets/task-2-seg.png` (Used in the Bento Box for Instance Segmentation).
-* `docs/assets/task-3-track.png` (Used in the Bento Box for Object Tracking).
-* `docs/assets/task-4-skill.png` (Used in the Bento Box for Skill Assessment).
+*Tip: Dark backgrounds or transparent PNGs blend best with the glassmorphism effects.*
 
-*Tip: For the bento box images, images with dark backgrounds or transparent PNGs blend best with the glowing card effects.*
+### 2. Update Citation Information
+Edit the citation section in `index.html` (search for `switchCitationTab`):
+- Update author names
+- Modify publication year and date
+- Update DOI and journal reference
+- Adjust BibTeX entry
 
-### 2. Update Links
-Open `index.html` and search for `#` or `href=""` to update the actual links when they become available:
-* ArXiv Paper Link
-* Hugging Face Dataset Link
-* Update the `assets/ZipContentsReport.csv` link in the Modular Data Access section if needed.
+### 3. Update Links
+Key links to update:
+- ArXiv: `https://arxiv.org/abs/2510.16371`
+- Nature Scientific Data: `https://doi.org/10.1038/s41597-026-07464-0`
+- Hugging Face Dataset: `https://huggingface.co/datasets/mjahmadi/Cataract-LMM`
+- GitHub Repository: `https://github.com/MJAHMADEE/Cataract-LMM`
 
-### 3. Deploy via GitHub Pages
-Since the site is completely static, deploying is trivial:
+### 4. License Compliance
+- Update footer license statement if needed
+- Update institutional affiliations
+- Maintain attribution to all partners
 
-1. Push these files to your repository (make sure they are in the `docs/` folder or root depending on your preference. Currently setup for `docs/`).
-2. Go to your GitHub repository -> **Settings** -> **Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**.
-4. Select the `main` branch and the `/docs` folder.
-5. Click **Save**.
+## 🚀 Deployment via GitHub Pages
 
-GitHub actions will automatically build and deploy your site within a few minutes.
+### Setup
+1. Ensure files are in the `/docs` folder of your repository
+2. Go to **Repository Settings** → **Pages**
+3. Select **Deploy from a branch**
+4. Choose `main` branch and `/docs` folder
+5. Click **Save**
+
+### Verification
+- Website will be available at: `https://<username>.github.io/Cataract-LMM/`
+- Deployment typically completes within 2-3 minutes
+- Check the **Deployments** tab for status
+
+## 🔧 Theme Support
+
+The website includes automatic light/dark mode support:
+- Dark mode: Professional medical visualization theme
+- Light mode: High-contrast readable alternative
+- User preference is saved to browser localStorage
+- Toggle button in header navbar
+
+## 📝 Browser Support
+- ✅ Chrome/Edge (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Mobile browsers
+
+## 🎯 Performance Optimizations
+- Glassmorphism CSS for visual depth without heavy assets
+- SVG icons for crisp scaling at any resolution
+- Minimal JavaScript for fast interactions
+- CDN-hosted Tailwind CSS
+- Particle network animation with canvas
+
+## 📞 Support
+For website-related questions, contact:
+- **Academic**: mjahmadi@email.kntu.ac.ir
+- **Personal**: mjahmadee@gmail.com
