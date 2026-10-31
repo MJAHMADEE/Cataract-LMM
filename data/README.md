@@ -282,7 +282,7 @@ Cataract-LMM/
 
 ## 📜 License & Attribution
 
-This dataset is released under **CC BY 4.0**. Proper attribution is required. 
+This dataset is released under **CC BY-NC-ND 4.0**. Proper attribution is required.
 
 **For detailed ownership and licensing information, see:**
 - [`LICENSE.md`](LICENSE.md) - Local license file

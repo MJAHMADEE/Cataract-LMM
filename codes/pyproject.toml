@@ -17,7 +17,7 @@ authors = [
     "Mahdi Tavakoli <tavakoli@ualberta.ca>",
     "D. Taghirad, Hamid <taghirad@kntu.ac.ir>"
 ]
-license = "CC-BY-4.0"
+license = "CC-BY-NC-ND-4.0"
 readme = "README.md"
 homepage = "https://github.com/MJAHMADEE/Cataract-LMM"
 repository = "https://github.com/MJAHMADEE/Cataract-LMM"

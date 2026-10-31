@@ -1,9 +1,9 @@
 # License
 
-The data in this repository are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+The data in this repository are licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)** license.
 
 - You **must provide proper attribution** when using these data.
-- For the full legal code, see: https://creativecommons.org/licenses/by/4.0/legalcode
+- For the full legal code, see: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
 
 ## Ownership of the data
 
@@ -24,4 +24,4 @@ The data in this repository are licensed under the **Creative Commons Attributio
 - Applied Robotics and AI Solutions (ARAS), Faculty of Electrical Engineering, K.N. Toosi University of Technology, Tehran, Iran  
 - Translational Ophthalmology Research Center, Farabi Eye Hospital, Tehran University of Medical Sciences, Tehran, Iran
 
-All data and annotations are to be properly attributed in accordance with the **CC BY 4.0** license.
+All data and annotations are to be properly attributed in accordance with the **CC BY-NC-ND 4.0** license.

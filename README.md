@@ -17,7 +17,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org)
 [![Poetry](https://img.shields.io/badge/Dependency%20Management-Poetry-60a5fa.svg?style=flat&logo=poetry&logoColor=white)](https://python-poetry.org)
 [![Docker](https://img.shields.io/badge/Container-Docker-2496ed.svg?style=flat&logo=docker&logoColor=white)](https://docker.com)
-[![License: CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-lightgrey.svg?style=flat)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC-BY-NC-ND-4.0](https://img.shields.io/badge/License-CC--BY--NC--ND--4.0-lightgrey.svg?style=flat)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088ff.svg?style=flat&logo=github-actions&logoColor=white)](https://github.com/features/actions)
 [![Code Quality](https://img.shields.io/badge/Code%20Quality-Black%20%7C%20Flake8%20%7C%20MyPy-000000.svg?style=flat&logo=python&logoColor=white)](https://github.com/psf/black)
 [![Medical AI](https://img.shields.io/badge/Domain-Medical%20AI-26a69a.svg?style=flat&logo=stethoscope&logoColor=white)](#)
@@ -174,7 +174,7 @@ graph TB
 ```
 Cataract_LMM/
 ├── 🏠 README.md                    # Project overview and documentation
-├── 📄 LICENSE                     # CC-BY-4.0 license
+├── 📄 LICENSE                     # CC-BY-NC-ND-4.0 license
 ├── 🤝 CONTRIBUTING.md             # Contribution guidelines
 ├── 🔒 .gitignore                  # Git ignore patterns
 ├── 📊 codes/                      # Main codebase
